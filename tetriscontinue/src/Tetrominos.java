@@ -92,9 +92,9 @@ public class Tetrominos {
         }
        return temp;
     }
-  double distanceMaxY()
+  Point distanceMaxY()
     {
-        double temp =-999;
+        Point temp =new Point(0,-999);
        for(int i=0;i<piece.length;i++)
         {
           for(int j=0;j<piece[i].length;j++)
@@ -107,9 +107,10 @@ public class Tetrominos {
                         {
                            double hyp=Math.sqrt((i+k)*taill_block*(i+k)*taill_block+(j+G)*taill_block*(j+G)*taill_block);
                            double calc=Math.sin(angle+Math.acos((i+k)*taill_block/hyp))*hyp;
-                                if(calc >temp)
+                                if(calc >temp.y)
                                 {
-                                    temp=calc;
+                                    temp.y=(int)calc;
+                                    temp.x=(int)(Math.cos(angle+Math.acos((i+k)*taill_block/hyp))*hyp);
                                 }
                         }
                 
@@ -151,7 +152,7 @@ public class Tetrominos {
     }
   int deplacementY(char[][] matrix)
   {
-      double depalcement=this.coordonne.y+Math.ceil(distanceMaxY());
+      double depalcement=this.coordonne.y+distanceMaxY().y;
       
       if(matrix[(int)depalcement/taill_block][this.coordonne.x/taill_block] == 1)
         return 0;

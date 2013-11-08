@@ -83,15 +83,20 @@ public class persoPanel extends JPanel{
     transform.translate(tetrominos.coordonne.x, tetrominos.coordonne.y);
     rotatedRect = transform.createTransformedShape(r2d);
     g2d.fill(rotatedRect );
+    r2d = new Rectangle2D.Double(tetrominos.distanceMaxY().x, tetrominos.distanceMaxY().y, taill_block, taill_block);                    
+    transform = new AffineTransform();
+    transform.translate(tetrominos.coordonne.x, tetrominos.coordonne.y);
+    rotatedRect = transform.createTransformedShape(r2d);
+    g2d.fill(rotatedRect );
     g2d.setColor(Color.BLACK);
     g2d.drawString("position :"+(int)(tetrominos.coordonne.y+Math.ceil(tetrominos.distanceMinY()))/taill_block+"miny/", 300, 30);
 
-    g2d.drawString("position :"+(int)(tetrominos.coordonne.y+Math.ceil(tetrominos.distanceMaxY()))/taill_block+"maxy/", 300, 40);
+    g2d.drawString("position :"+(int)(tetrominos.coordonne.y+Math.ceil(tetrominos.distanceMaxY().y))/taill_block+"maxy/", 300, 40);
 
     g2d.drawString("position :"+(int)(tetrominos.coordonne.x+Math.ceil(tetrominos.distanceMaxX().x))/taill_block+"maxx/", 300, 50);
     
     X=tetrominos.coordonne.x/taill_block;
-    Y=(int)((tetrominos.coordonne.y+Math.ceil(tetrominos.distanceMaxY()))/taill_block);
+    Y=(int)((tetrominos.coordonne.y+Math.ceil(tetrominos.distanceMaxY().y))/taill_block);
     g2d.drawString("position : "+ (int)matrix[Y][X]+"matrix["+Y+"]["+X+"]", 400, 40);
 
     g2d.drawString("Angle:"+tetrominos.getAngle()+"-"+Math.toRadians(45)+"-"+Math.toDegrees(tetrominos.getAngle())+"", 300, 60);
@@ -103,7 +108,7 @@ public class persoPanel extends JPanel{
     g2d.setColor(Color.YELLOW);
     g2d.drawLine(tetrominos.coordonne.x,tetrominos.coordonne.y, tetrominos.coordonne.x+(int)(tetrominos.distanceMaxX().x), tetrominos.coordonne.y);
     g2d.setColor(Color.GREEN);
-    g2d.drawLine(tetrominos.coordonne.x,tetrominos.coordonne.y, tetrominos.coordonne.x, tetrominos.coordonne.y+(int)tetrominos.distanceMaxY());
+    g2d.drawLine(tetrominos.coordonne.x,tetrominos.coordonne.y, tetrominos.coordonne.x, tetrominos.coordonne.y+(int)tetrominos.distanceMaxY().y);
     g2d.setColor(Color.MAGENTA);
     g2d.drawLine(tetrominos.coordonne.x,tetrominos.coordonne.y, tetrominos.coordonne.x, tetrominos.coordonne.y+(int)tetrominos.distanceMinY());
     
