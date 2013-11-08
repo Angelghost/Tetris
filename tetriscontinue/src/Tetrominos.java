@@ -156,9 +156,9 @@ public class Tetrominos {
       
       if(matrix[(int)depalcement/taill_block][this.coordonne.x/taill_block] == 1)
         return 0;
-      return 1;
+      return 2;
   }
-  
+    
   void placer(char[][] matrix)
   {
      if(Math.toRadians(-45) < angle && angle < Math.toRadians(45))
