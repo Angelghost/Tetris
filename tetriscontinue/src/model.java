@@ -103,8 +103,15 @@ public class model {
         myView.afficher(matrix,tetrominos);
     }
     public void rotationTetrominos(int nbr){
-
-        tetrominos.setAngle(tetrominos.getAngle()+Math.toRadians(nbr*10));
+        Tetrominos temp=new Tetrominos(tetrominos);
+        temp.setAngle(temp.getAngle()+Math.toRadians(nbr*10));
+        
+        if(temp.testRotation(matrix))
+        {
+           tetrominos=temp;
+            
+        }
+        
         myView.afficher(matrix,tetrominos);
     }
     // Clears the matrix

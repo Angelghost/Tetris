@@ -23,7 +23,11 @@ public class Tetrominos {
         piece[2][1] = 1;
         piece[2][0] = 1;
     }
-    
+     public Tetrominos (Tetrominos temp) {
+        piece=temp.piece;
+        angle=temp.angle;
+        coordonne=temp.coordonne;
+    }
     double getAngle()
     {
         return angle;
@@ -226,5 +230,23 @@ public class Tetrominos {
       
   }
 
+  boolean testRotation(char[][] matrix)
+  {
+  
+      if(matrix[(coordonne.y+distanceMaxY().y)/taill_block][(coordonne.x+distanceMaxY().x)/taill_block] == 1)
+          return false;
+      if(matrix[(coordonne.y+distanceMinY().y)/taill_block][(coordonne.x+distanceMinY().x)/taill_block] == 1)
+          return false;
+      if(matrix[(coordonne.y+distanceMaxX().y)/taill_block][(coordonne.x+distanceMaxX().x)/taill_block] == 1)
+          return false;
+      if(matrix[(coordonne.y+distanceMinX().y)/taill_block][(coordonne.x+distanceMinX().x)/taill_block] == 1)
+          return false;
+      
+      return true;
+      
+      
+  }
+  
+  
 }
 
