@@ -84,7 +84,7 @@ public class model {
         int distanceMax = (int)(x+tetrominos.distanceMaxX().x)/taill_block;
         int distanceMin = (int)(x+tetrominos.distanceMinX().x)/taill_block;
         
-        if(x>= taill_block*(this.NUM_BLOCKS_X) || y>= taill_block*(this.NUM_BLOCKS_Y) )
+        if(x>= taill_block*(this.NUM_BLOCKS_X) || y>= taill_block*(this.NUM_BLOCKS_Y) || x < 1  || distanceMin <1)
         {
             return;
         }
