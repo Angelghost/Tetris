@@ -89,7 +89,7 @@ public class persoPanel extends JPanel{
     rotatedRect = transform.createTransformedShape(r2d);
     g2d.fill(rotatedRect );
     g2d.setColor(Color.BLACK);
-    g2d.drawString("position :"+(int)(tetrominos.coordonne.y+Math.ceil(tetrominos.distanceMinY()))/taill_block+"miny/", 300, 30);
+    g2d.drawString("position :"+(int)(tetrominos.coordonne.y+Math.ceil(tetrominos.distanceMinY().y))/taill_block+"miny/", 300, 30);
 
     g2d.drawString("position :"+(int)(tetrominos.coordonne.y+Math.ceil(tetrominos.distanceMaxY().y))/taill_block+"maxy/", 300, 40);
 
@@ -110,7 +110,7 @@ public class persoPanel extends JPanel{
     g2d.setColor(Color.GREEN);
     g2d.drawLine(tetrominos.coordonne.x,tetrominos.coordonne.y, tetrominos.coordonne.x, tetrominos.coordonne.y+(int)tetrominos.distanceMaxY().y);
     g2d.setColor(Color.MAGENTA);
-    g2d.drawLine(tetrominos.coordonne.x,tetrominos.coordonne.y, tetrominos.coordonne.x, tetrominos.coordonne.y+(int)tetrominos.distanceMinY());
+    g2d.drawLine(tetrominos.coordonne.x,tetrominos.coordonne.y, tetrominos.coordonne.x, tetrominos.coordonne.y+(int)tetrominos.distanceMinY().y);
     
     g2d.setColor(Color.BLUE);
     g2d.drawOval(tetrominos.coordonne.x, tetrominos.coordonne.y, 1, 1);
