@@ -26,7 +26,7 @@ public class Tetrominos {
      public Tetrominos (Tetrominos temp) {
         piece=temp.piece;
         angle=temp.angle;
-        coordonne=temp.coordonne;
+        coordonne=new Point(temp.coordonne);
     }
     double getAngle()
     {
@@ -67,7 +67,7 @@ public class Tetrominos {
         }
        return temp;
     }
-  Point distanceMinX()
+    Point distanceMinX()
     {
         Point temp =new Point(999,0);
        for(int i=0;i<piece.length;i++)
@@ -96,7 +96,7 @@ public class Tetrominos {
         }
        return temp;
     }
-  Point distanceMaxY()
+    Point distanceMaxY()
     {
         Point temp =new Point(0,-999);
        for(int i=0;i<piece.length;i++)
@@ -124,9 +124,8 @@ public class Tetrominos {
             }
         }
        return temp;
-    }
-  
-  Point distanceMinY()
+    }  
+    Point distanceMinY()
     {
         Point temp =new Point(0,999);
        for(int i=0;i<piece.length;i++)
@@ -163,7 +162,40 @@ public class Tetrominos {
         return 0;
       return 1;
   }
-    
+  
+  boolean testDeplacement(char[][] matrix)
+  {
+       for(int i=0;i<piece.length;i++)
+        {
+          for(int j=0;j<piece[i].length;j++)
+            {
+                if(piece[i][j] == 1)
+                {
+                    for(int k=0;k<2;k++)
+                    {
+                            for(int G=0;G<2;G++)
+                        {
+                           double hyp=Math.sqrt((i+k)*taill_block*(i+k)*taill_block+(j+G)*taill_block*(j+G)*taill_block);
+                           double x=Math.cos(angle+Math.acos((i+k)*taill_block/hyp))*hyp;
+                           double y=Math.sin(angle+Math.acos((i+k)*taill_block/hyp))*hyp;
+                           if((int)(coordonne.y+y+taill_block/2)/taill_block >= matrix.length-1 || (int)(coordonne.y+y)/taill_block < 0 || (int)(coordonne.x+x+taill_block/2)/taill_block >= matrix[i].length || (int)(coordonne.x+x)/taill_block <0 )
+                           {     
+                               return false;
+                           }
+                           if(matrix[(int)(coordonne.y+y+taill_block/2)/taill_block][(int)(coordonne.x+x+taill_block/2)/taill_block] != 0 )
+                                {
+                                    return false;
+                                            
+                                }
+                        }
+                
+                    }
+                }
+                
+            }
+        }
+      return true;
+  }
   void placer(char[][] matrix)
   {
      if(Math.toRadians(-45) < angle && angle < Math.toRadians(45))

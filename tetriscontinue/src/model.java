@@ -25,11 +25,11 @@ public class model {
     public model(view myView2){
         
         this.myView=myView2;
-        timer1=new Timer(1000,new ActionListener(){
+        timer1=new Timer(250,new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         Tetrominos temp=tetrominos;
                         temp.coordonne.y+=20;
-                        if(temp.deplacementY(matrix)==1){
+                        if(temp.testDeplacement(matrix)){
                             tetrominos=temp;
                         }
                         else
@@ -89,15 +89,11 @@ public class model {
             return;
         }
         
-        int test =1;
-        if( distanceMax >= this.NUM_BLOCKS_X ) return;
-        if(matrix[(int)(y+tetrominos.distanceMaxX().y)/taill_block][distanceMax] ==1 || matrix[(int)(y+tetrominos.distanceMinX().y)/taill_block][distanceMin] == 1 )
+        Tetrominos temp = new Tetrominos(tetrominos);
+        temp.coordonne.x=x;
+        if(temp.testDeplacement(matrix))
         {
-            test=0;
-        }
-        if(test == 1)
-        {
-            tetrominos.coordonne.x=x;
+            tetrominos=temp;
         }
         
         myView.afficher(matrix,tetrominos);
@@ -111,7 +107,7 @@ public class model {
            tetrominos=temp;
             
         }
-        
+
         myView.afficher(matrix,tetrominos);
     }
     // Clears the matrix

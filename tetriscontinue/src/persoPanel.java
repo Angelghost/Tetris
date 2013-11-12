@@ -55,16 +55,10 @@ public class persoPanel extends JPanel{
         {
           for(int j=0;j<matrix[i].length;j++)
             {
-                if(matrix[i][j] == 1)
-                {
-                    g2d.setColor(Color.BLACK);
-                    g2d.drawRect(j*taill_block, i*taill_block, taill_block, taill_block);
-                }
-                if(matrix[i][j] == 2)
-                {
-                    g2d.setColor(Color.yellow);
-                    g2d.drawRect(j*taill_block, i*taill_block, taill_block, taill_block);
-                }
+
+                g2d.setColor(getColor(matrix[i][j]));
+                g2d.drawRect(j*taill_block, i*taill_block, taill_block, taill_block);
+                g2d.setColor(Color.black);
             }
         }
     }
@@ -152,5 +146,24 @@ public class persoPanel extends JPanel{
     }
     
 }
-
+    
+    public Color getColor(int temp)
+    {
+        Color tempColor;
+        switch(temp)
+        {
+            case 1 : tempColor=Color.BLACK;
+                break;
+            case 2 : tempColor=Color.YELLOW;
+                break;
+            case 3 : tempColor=Color.CYAN;
+                break;
+            default:
+                     tempColor=Color.WHITE;
+                break;
+                 
+        }
+        
+        return tempColor;
+    }
 }
