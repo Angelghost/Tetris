@@ -66,7 +66,7 @@ public class persoPanel extends JPanel{
         {
           for(int j=0;j<tetrominos.listeCarre[i].length;j++)
             {
-               tetrominos.listeCarre[i][j].paintCarreRotation(g2d, tetrominos.getAngle());
+               tetrominos.listeCarre[i][j].paintCarre(g2d);
             }
         }
     }

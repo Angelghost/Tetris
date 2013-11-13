@@ -51,7 +51,7 @@ public class Tetrominos {
                     {
                       for(int j=0;j<listeCarre[i].length;j++)
                         {
-                            if(matrix[row][col].getRectangle().intersects(listeCarre[i][j].getRectangle()) && matrix[row][col].getPlein()==1 && listeCarre[i][j].getPlein() == 1 ) return false;
+                            if(matrix[row][col].getRectangle().intersects(listeCarre[i][j].getRectangle().getBounds2D()) && matrix[row][col].getPlein()==1 && listeCarre[i][j].getPlein() == 1 ) return false;
                         
                             if(listeCarre[i][j].getRectangle().intersects(new Rectangle2D.Double(12*taill_block,0,800,600))) return false;
                         
@@ -82,7 +82,18 @@ public class Tetrominos {
       coordonne.x=x;
        for (int row=0;row<listeCarre.length;row++) {
                         for (int col=0;col<listeCarre[0].length;col++) {
-                                listeCarre[row][col].getRectangle().setRect(coordonne.x+row*taille, coordonne.y+col*taille, taille, taille);
+                                ((Rectangle2D)listeCarre[row][col].getRectangle()).setRect(coordonne.x+row*taille, coordonne.y+col*taille, taille, taille);
+                        }
+                }
+  }
+  
+  
+  void rotation()
+  {
+     
+       for (int row=0;row<listeCarre.length;row++) {
+                        for (int col=0;col<listeCarre[0].length;col++) {
+                                listeCarre[row][col].carreRotation(angle, coordonne);
                         }
                 }
   }

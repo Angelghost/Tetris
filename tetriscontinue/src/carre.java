@@ -21,7 +21,7 @@ import java.awt.geom.*;
  */
 public class carre {
     
-    private Rectangle2D carre;
+    private Shape carre;
     private Color couleur;
     private int plein;
     
@@ -39,11 +39,11 @@ public class carre {
     }
     public carre(carre temp)
     {
-        carre=new Rectangle2D.Double(temp.getRectangle().getX(),temp.getRectangle().getY(),temp.getRectangle().getHeight(),temp.getRectangle().getWidth());
+        carre=new Rectangle2D.Double(temp.getRectangle().getBounds2D().getX(),temp.getRectangle().getBounds2D().getY(),temp.getRectangle().getBounds2D().getHeight(),temp.getRectangle().getBounds2D().getWidth());
         couleur=temp.couleur;
         plein=temp.plein;
     }
-    public Rectangle2D getRectangle()
+    public Shape getRectangle()
     {     
         return carre;
     }
@@ -66,13 +66,11 @@ public class carre {
           g2d.setColor(Color.black);
     }
     
-    public void paintCarreRotation(Graphics2D g2d, double angle)
+    public void carreRotation(double angle,Point centre)
     {
-        g2d.setColor(couleur);
         AffineTransform transform = new AffineTransform();
-        transform.rotate(angle);
-        
-        if(plein == 1) g2d.fill(transform.createTransformedShape(carre));
-          g2d.setColor(Color.black);
+        transform.setToRotation(angle,centre.x, centre.y);
+        carre=transform.createTransformedShape(carre);
+
     }
 }
