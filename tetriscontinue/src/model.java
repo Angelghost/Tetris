@@ -1,6 +1,8 @@
 import java.awt.event.*;
 import javax.swing.*;
-
+import java.awt.Graphics2D;
+import java.awt.geom.*;
+import java.awt.*;
 public class model {
 
     
@@ -15,7 +17,7 @@ public class model {
     private int taill_block = 20;
     private Timer timer1;
     
-    private char[][] matrix = new char[NUM_BLOCKS_Y][NUM_BLOCKS_X];
+    private carre[][] matrix = new carre[NUM_BLOCKS_Y][NUM_BLOCKS_X];
     
     private view myView;
     
@@ -27,17 +29,7 @@ public class model {
         this.myView=myView2;
         timer1=new Timer(250,new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                        Tetrominos temp=tetrominos;
-                        temp.coordonne.y+=20;
-                        if(temp.testDeplacement(matrix)){
-                            tetrominos=temp;
-                        }
-                        else
-                        {
-                            tetrominos.placer(matrix);
-                           tetrominos=new Tetrominos(); 
-                        }
-                        myView.afficher(matrix, tetrominos);
+                     
                     }
                 });
         timer1.start();
@@ -81,42 +73,26 @@ public class model {
     }
     
     public void deplacerTetrominos(int x,int y){//regler les probleme
-        int distanceMax = (int)(x+tetrominos.distanceMaxX().x)/taill_block;
-        int distanceMin = (int)(x+tetrominos.distanceMinX().x)/taill_block;
-        
-        if(x>= taill_block*(this.NUM_BLOCKS_X) || y>= taill_block*(this.NUM_BLOCKS_Y) || x < 1  || distanceMin <1)
-        {
-            return;
-        }
-        
+
         Tetrominos temp = new Tetrominos(tetrominos);
-        temp.coordonne.x=x;
-        if(temp.testDeplacement(matrix))
-        {
-            tetrominos=temp;
-        }
-        
+        temp.mettreAJour(x,y,taill_block);
+        if(temp.testDeplacement(matrix)) tetrominos=temp;
         myView.afficher(matrix,tetrominos);
+ 
     }
     public void rotationTetrominos(int nbr){
         Tetrominos temp=new Tetrominos(tetrominos);
         temp.setAngle(temp.getAngle()+Math.toRadians(nbr*10));
         
-        if(temp.testRotation(matrix))
-        {
-           tetrominos=temp;
-            
-        }
-
-        myView.afficher(matrix,tetrominos);
+        
     }
     // Clears the matrix
     private void clearMatrix() {
                 for (int row=0;row<matrix.length;row++) {
                         for (int col=0;col<matrix[0].length;col++) {
-                                matrix[row][col] = 0;
+                                matrix[row][col] = new carre(row*taill_block,col*taill_block,taill_block,Color.WHITE,0);
                                 if(col==0 || row ==0 ||col == matrix[0].length-1  || row ==matrix.length -1)
-                                    matrix[row][col] = 1;
+                                    matrix[row][col] = new carre(row*taill_block,col*taill_block,taill_block,Color.BLACK,1);
                         }
                 }
         }

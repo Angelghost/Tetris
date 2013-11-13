@@ -16,7 +16,7 @@ public class panel extends view {
     }
     
     @Override
-    public void afficher(char[][] matrix,Tetrominos tetrominos) {
+    public void afficher(carre[][] matrix,Tetrominos tetrominos) {
         
         ((persoPanel)monPanel).setMatrix(matrix);
         ((persoPanel)monPanel).printTetrominos(tetrominos);

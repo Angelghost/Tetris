@@ -1,32 +1,37 @@
+import java.awt.Color;
 import java.awt.Point;
-// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-// #[regen=yes,id=DCE.884CD1FD-4277-7741-4F83-212D64EE915E]
-// </editor-fold> 
+import java.awt.geom.*;
+import java.util.ArrayList;
+
 public class Tetrominos {
     private int taill_block =20;
     private char color;
     private double angle = 0;
     public Point coordonne=new Point(22,22);
-    public int[][] piece = new int[4][4];
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.8B53D623-9B04-7BC2-403F-E7F66E43B06C]
-    // </editor-fold> 
+    public carre[][] listeCarre = new carre[4][4];
+    
+    
     public Tetrominos () {
-        for (int row=0;row<piece.length;row++) {
-                        for (int col=0;col<piece[0].length;col++) {
-                                piece[row][col] = 0;
+        for (int row=0;row<listeCarre.length;row++) {
+                        for (int col=0;col<listeCarre[0].length;col++) {
+                                listeCarre[row][col] = new carre(coordonne.y+row*taill_block,coordonne.x+col*taill_block,taill_block,Color.WHITE,0);
                         }
                 }
         
-        piece[0][1] = 1;
-        piece[1][1] = 1;
-        piece[2][1] = 1;
-        piece[2][0] = 1;
+        listeCarre[0][1]= new carre(coordonne.y+0,coordonne.x+1*taill_block,taill_block,Color.YELLOW,1);
+        listeCarre[1][1]= new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,taill_block,Color.YELLOW,1);
+        listeCarre[2][1]= new carre(coordonne.y+2*taill_block,coordonne.x+1*taill_block,taill_block,Color.YELLOW,1);
+        listeCarre[2][0]= new carre(coordonne.y+2*taill_block,coordonne.x+0,taill_block,Color.YELLOW,1);
+
     }
      public Tetrominos (Tetrominos temp) {
-        piece=temp.piece;
         angle=temp.angle;
         coordonne=new Point(temp.coordonne);
+        for (int row=0;row<listeCarre.length;row++) {
+                for (int col=0;col<listeCarre[0].length;col++) {
+                        listeCarre[row][col] =new carre(temp.listeCarre[row][col]);
+                }
+        }
     }
     double getAngle()
     {
@@ -38,226 +43,28 @@ public class Tetrominos {
        this.angle=angle;
     }
     
-    Point distanceMaxX()
-    {
-        Point temp = new Point(-999,0);
-       for(int i=0;i<piece.length;i++)
-        {
-          for(int j=0;j<piece[i].length;j++)
-            {
-                if(piece[i][j] == 1)
-                {
-                    for(int k=0;k<2;k++)
-                    {
-                            for(int G=0;G<2;G++)
-                        {
-                           double hyp=Math.sqrt((i+k)*taill_block*(i+k)*taill_block+(j+G)*taill_block*(j+G)*taill_block);
-                           double calc=Math.cos(angle+Math.acos((i+k)*taill_block/hyp))*hyp;
-                                if(calc > temp.x)
-                                {
-                                    temp.x=(int)calc;
-                                    temp.y=(int)(Math.sin(angle+Math.acos((i+k)*taill_block/hyp))*hyp);
-                                }
-                        }
-                
-                    }
-                }
-                
-            }
-        }
-       return temp;
-    }
-    Point distanceMinX()
-    {
-        Point temp =new Point(999,0);
-       for(int i=0;i<piece.length;i++)
-        {
-          for(int j=0;j<piece[i].length;j++)
-            {
-                if(piece[i][j] == 1)
-                {
-                    for(int k=0;k<2;k++)
-                    {
-                            for(int G=0;G<2;G++)
-                        {
-                           double hyp=Math.sqrt((i+k)*taill_block*(i+k)*taill_block+(j+G)*taill_block*(j+G)*taill_block);
-                           double calc=Math.cos(angle+Math.acos((i+k)*taill_block/hyp))*hyp;
-                                if(calc <temp.x)
-                                {
-                                    temp.x=(int)calc;
-                                    temp.y=(int)(Math.sin(angle+Math.acos((i+k)*taill_block/hyp))*hyp);
-                                }
-                        }
-                
-                    }
-                }
-                
-            }
-        }
-       return temp;
-    }
-    Point distanceMaxY()
-    {
-        Point temp =new Point(0,-999);
-       for(int i=0;i<piece.length;i++)
-        {
-          for(int j=0;j<piece[i].length;j++)
-            {
-                if(piece[i][j] == 1)
-                {
-                    for(int k=0;k<2;k++)
-                    {
-                            for(int G=0;G<2;G++)
-                        {
-                           double hyp=Math.sqrt((i+k)*taill_block*(i+k)*taill_block+(j+G)*taill_block*(j+G)*taill_block);
-                           double calc=Math.sin(angle+Math.acos((i+k)*taill_block/hyp))*hyp;
-                                if(calc >temp.y)
-                                {
-                                    temp.y=(int)calc;
-                                    temp.x=(int)(Math.cos(angle+Math.acos((i+k)*taill_block/hyp))*hyp);
-                                }
-                        }
-                
-                    }
-                }
-                
-            }
-        }
-       return temp;
-    }  
-    Point distanceMinY()
-    {
-        Point temp =new Point(0,999);
-       for(int i=0;i<piece.length;i++)
-        {
-          for(int j=0;j<piece[i].length;j++)
-            {
-                if(piece[i][j] == 1)
-                {
-                    for(int k=0;k<2;k++)
-                    {
-                            for(int G=0;G<2;G++)
-                        {
-                           double hyp=Math.sqrt((i+k)*taill_block*(i+k)*taill_block+(j+G)*taill_block*(j+G)*taill_block);
-                           double calc=Math.sin(angle+Math.acos((i+k)*taill_block/hyp))*hyp;
-                                if(calc <temp.y)
-                                {
-                                    temp.y=(int)calc;
-                                    temp.x=(int)(Math.cos(angle+Math.acos((i+k)*taill_block/hyp))*hyp);
-                                }
-                        }
-                
-                    }
-                }
-                
-            }
-        }
-       return temp;
-    }
-  int deplacementY(char[][] matrix)
+  boolean testDeplacement(carre[][] matrix)
   {
-      double depalcement=this.coordonne.y+distanceMaxY().y;
-      
-      if(matrix[(int)depalcement/taill_block][this.coordonne.x/taill_block] == 1)
-        return 0;
-      return 1;
-  }
-  
-  boolean testDeplacement(char[][] matrix)
-  {
-       for(int i=0;i<piece.length;i++)
-        {
-          for(int j=0;j<piece[i].length;j++)
-            {
-                if(piece[i][j] == 1)
-                {
-                    for(int k=0;k<2;k++)
+      for (int row=0;row<matrix.length;row++) {
+            for (int col=0;col<matrix[0].length;col++) {
+                for(int i=0;i<listeCarre.length;i++)
                     {
-                            for(int G=0;G<2;G++)
+                      for(int j=0;j<listeCarre[i].length;j++)
                         {
-                           double hyp=Math.sqrt((i+k)*taill_block*(i+k)*taill_block+(j+G)*taill_block*(j+G)*taill_block);
-                           double x=Math.cos(angle+Math.acos((i+k)*taill_block/hyp))*hyp;
-                           double y=Math.sin(angle+Math.acos((i+k)*taill_block/hyp))*hyp;
-                           if((int)(coordonne.y+y+taill_block/2)/taill_block >= matrix.length-1 || (int)(coordonne.y+y)/taill_block < 0 || (int)(coordonne.x+x+taill_block/2)/taill_block >= matrix[i].length || (int)(coordonne.x+x)/taill_block <0 )
-                           {     
-                               return false;
-                           }
-                           if(matrix[(int)(coordonne.y+y+taill_block/2)/taill_block][(int)(coordonne.x+x+taill_block/2)/taill_block] != 0 )
-                                {
-                                    return false;
-                                            
-                                }
+                            if(matrix[row][col].getRectangle().intersects(listeCarre[i][j].getRectangle()) && matrix[row][col].getPlein()==1 && listeCarre[i][j].getPlein() == 1 ) return false;
+                        
+                            if(listeCarre[i][j].getRectangle().intersects(new Rectangle2D.Double(12*taill_block,0,800,600))) return false;
+                        
                         }
-                
                     }
-                }
-                
-            }
-        }
+                    
+           } 
+      }
       return true;
   }
   void placer(char[][] matrix)
   {
-     if(Math.toRadians(-45) < angle && angle < Math.toRadians(45))
-     {
-         for(int i=0;i<piece.length;i++)
-        {
-          for(int j=0;j<piece[i].length;j++)
-            {
-                if(piece[i][j] == 1)
-                {
-                    matrix[j+coordonne.y/taill_block][i+coordonne.x/taill_block] =1;
-                }
-            }
-        }
-     }
-     else if(Math.toRadians(45) < angle && angle < Math.toRadians(135))
-     {
-         
-        for(int i=0;i<piece.length;i++)
-        {
-          for(int j=0;j<piece[i].length;j++)
-            {
-                if(piece[i][piece[i].length-j-1] == 1)
-                {
-                    matrix[i+coordonne.y/taill_block][-(piece[i].length-j-1)+coordonne.x/taill_block] =1;
-                }
-            }
-        }
-
-     }
-     else if(Math.toRadians(135) < angle && angle < Math.toRadians(225))
-     {
-         
-        for(int i=0;i<piece.length;i++)
-        {
-          for(int j=0;j<piece[i].length;j++)
-            {
-                if(piece[piece.length-i-1][piece[i].length-j-1] == 1)
-                {
-                    matrix[-(piece[i].length-j)+coordonne.y/taill_block][-(piece.length-i)+coordonne.x/taill_block] =1;
-                }
-
-            }
-        }
-
-     }
-     else if(Math.toRadians(225) < angle && angle < Math.toRadians(315))
-     {
-         
-        for(int i=0;i<piece.length;i++)
-        {
-          for(int j=0;j<piece[i].length;j++)
-            {
-                if(piece[piece.length-i-1][j] == 1)
-                {
-                    matrix[-(piece.length-i)+coordonne.y/taill_block][j+coordonne.x/taill_block] =1;
-                }
-
-            }
-        }
-
-     }
+     
      
       
   }
@@ -265,20 +72,19 @@ public class Tetrominos {
   boolean testRotation(char[][] matrix)
   {
   
-      if(matrix[(coordonne.y+distanceMaxY().y)/taill_block][(coordonne.x+distanceMaxY().x)/taill_block] == 1)
-          return false;
-      if(matrix[(coordonne.y+distanceMinY().y)/taill_block][(coordonne.x+distanceMinY().x)/taill_block] == 1)
-          return false;
-      if(matrix[(coordonne.y+distanceMaxX().y)/taill_block][(coordonne.x+distanceMaxX().x)/taill_block] == 1)
-          return false;
-      if(matrix[(coordonne.y+distanceMinX().y)/taill_block][(coordonne.x+distanceMinX().x)/taill_block] == 1)
-          return false;
-      
+     
+  
       return true;
-      
-      
   }
   
-  
+  void mettreAJour(int x, int y, int taille)
+  {
+      coordonne.x=x;
+       for (int row=0;row<listeCarre.length;row++) {
+                        for (int col=0;col<listeCarre[0].length;col++) {
+                                listeCarre[row][col].getRectangle().setRect(coordonne.x+row*taille, coordonne.y+col*taille, taille, taille);
+                        }
+                }
+  }
 }
 

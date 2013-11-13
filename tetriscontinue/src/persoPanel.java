@@ -17,7 +17,7 @@ import java.awt.font.FontRenderContext;
  */
 public class persoPanel extends JPanel{
     
-    private char[][] matrix ;
+    private carre[][] matrix ;
     private int taill_block =20;
     private Tetrominos tetrominos; 
    
@@ -25,7 +25,7 @@ public class persoPanel extends JPanel{
     {
         taill_block=taille;
     }
-    public void setMatrix(char[][] matrix)
+    public void setMatrix(carre[][] matrix)
     {
         this.matrix=matrix;
         
@@ -55,115 +55,22 @@ public class persoPanel extends JPanel{
         {
           for(int j=0;j<matrix[i].length;j++)
             {
-
-                g2d.setColor(getColor(matrix[i][j]));
-                g2d.drawRect(j*taill_block, i*taill_block, taill_block, taill_block);
-                g2d.setColor(Color.black);
+                matrix[i][j].paintCarre(g2d);
             }
         }
     }
-    int X=(int)(tetrominos.coordonne.x+tetrominos.distanceMinX().x)/taill_block;
-    int Y=tetrominos.coordonne.y/taill_block;
-    g2d.drawString("position : "+ (int)matrix[Y][X]+"matrix["+Y+"]["+X+"]", 400, 30);
-    
-    g2d.setColor(Color.RED);
-    r2d = new Rectangle2D.Double(tetrominos.distanceMinX().x, tetrominos.distanceMinX().y, taill_block, taill_block);                    
-    transform = new AffineTransform();
-    transform.translate(tetrominos.coordonne.x, tetrominos.coordonne.y);
-    rotatedRect = transform.createTransformedShape(r2d);
-    g2d.fill(rotatedRect );
-    r2d = new Rectangle2D.Double(tetrominos.distanceMaxX().x, tetrominos.distanceMaxX().y, taill_block, taill_block);                    
-    transform = new AffineTransform();
-    transform.translate(tetrominos.coordonne.x, tetrominos.coordonne.y);
-    rotatedRect = transform.createTransformedShape(r2d);
-    g2d.fill(rotatedRect );
-    r2d = new Rectangle2D.Double(tetrominos.distanceMaxY().x, tetrominos.distanceMaxY().y, taill_block, taill_block);                    
-    transform = new AffineTransform();
-    transform.translate(tetrominos.coordonne.x, tetrominos.coordonne.y);
-    rotatedRect = transform.createTransformedShape(r2d);
-    g2d.fill(rotatedRect );
-    g2d.setColor(Color.BLACK);
-    g2d.drawString("position :"+(int)(tetrominos.coordonne.y+Math.ceil(tetrominos.distanceMinY().y))/taill_block+"miny/", 300, 30);
 
-    g2d.drawString("position :"+(int)(tetrominos.coordonne.y+Math.ceil(tetrominos.distanceMaxY().y))/taill_block+"maxy/", 300, 40);
-
-    g2d.drawString("position :"+(int)(tetrominos.coordonne.x+Math.ceil(tetrominos.distanceMaxX().x))/taill_block+"maxx/", 300, 50);
-    
-    X=tetrominos.coordonne.x/taill_block;
-    Y=(int)((tetrominos.coordonne.y+Math.ceil(tetrominos.distanceMaxY().y))/taill_block);
-    g2d.drawString("position : "+ (int)matrix[Y][X]+"matrix["+Y+"]["+X+"]", 400, 40);
-
-    g2d.drawString("Angle:"+tetrominos.getAngle()+"-"+Math.toRadians(45)+"-"+Math.toDegrees(tetrominos.getAngle())+"", 300, 60);
-    
-    
-    
-    g2d.setColor(Color.RED);
-    g2d.drawLine(tetrominos.coordonne.x,tetrominos.coordonne.y, tetrominos.coordonne.x+(int)(tetrominos.distanceMinX().x), tetrominos.coordonne.y);
-    g2d.setColor(Color.YELLOW);
-    g2d.drawLine(tetrominos.coordonne.x,tetrominos.coordonne.y, tetrominos.coordonne.x+(int)(tetrominos.distanceMaxX().x), tetrominos.coordonne.y);
-    g2d.setColor(Color.GREEN);
-    g2d.drawLine(tetrominos.coordonne.x,tetrominos.coordonne.y, tetrominos.coordonne.x, tetrominos.coordonne.y+(int)tetrominos.distanceMaxY().y);
-    g2d.setColor(Color.MAGENTA);
-    g2d.drawLine(tetrominos.coordonne.x,tetrominos.coordonne.y, tetrominos.coordonne.x, tetrominos.coordonne.y+(int)tetrominos.distanceMinY().y);
-    
-    g2d.setColor(Color.BLUE);
-    g2d.drawOval(tetrominos.coordonne.x, tetrominos.coordonne.y, 1, 1);
-    g2d.setColor(Color.BLACK);
-    
     if(tetrominos != null)
     {
-        for(int i=0;i<tetrominos.piece.length;i++)
+        for(int i=0;i<tetrominos.listeCarre.length;i++)
         {
-          for(int j=0;j<tetrominos.piece[i].length;j++)
+          for(int j=0;j<tetrominos.listeCarre[i].length;j++)
             {
-                if(tetrominos.piece[i][j] == 1)
-                {
-                    g2d.setColor(Color.BLACK);
-                    r2d = new Rectangle2D.Double(i*taill_block, j*taill_block, taill_block, taill_block);
-                    
-                    transform = new AffineTransform();
-                    transform.translate(tetrominos.coordonne.x, tetrominos.coordonne.y);
-                    transform.rotate(tetrominos.getAngle());
-                    rotatedRect = transform.createTransformedShape(r2d);
-
-                    g2d.fill(rotatedRect );
-                }
-                else
-                {
-                    g2d.setColor(Color.GREEN);
-                    r2d = new Rectangle2D.Double(i*taill_block, j*taill_block, taill_block, taill_block);
-                    
-                    transform = new AffineTransform();
-                    transform.translate(tetrominos.coordonne.x, tetrominos.coordonne.y);
-                    transform.rotate(tetrominos.getAngle());
-                    rotatedRect = transform.createTransformedShape(r2d);
-
-                    g2d.draw(rotatedRect );
-                }
-                
+               tetrominos.listeCarre[i][j].paintCarreRotation(g2d, tetrominos.getAngle());
             }
         }
     }
     
 }
     
-    public Color getColor(int temp)
-    {
-        Color tempColor;
-        switch(temp)
-        {
-            case 1 : tempColor=Color.BLACK;
-                break;
-            case 2 : tempColor=Color.YELLOW;
-                break;
-            case 3 : tempColor=Color.CYAN;
-                break;
-            default:
-                     tempColor=Color.WHITE;
-                break;
-                 
-        }
-        
-        return tempColor;
-    }
 }

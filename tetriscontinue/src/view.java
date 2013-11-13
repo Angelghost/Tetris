@@ -25,6 +25,6 @@ public abstract class view {
         this.viewWidth = val;
     }
     
-    public abstract void afficher(char[][] matrix,Tetrominos tetrominos);
+    public abstract void afficher(carre[][] matrix,Tetrominos tetrominos);
 }
 
