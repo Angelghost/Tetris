@@ -81,11 +81,10 @@ public class model {
  
     }
     public void rotationTetrominos(int nbr){
-        Tetrominos temp=new Tetrominos(tetrominos);
+        Tetrominos temp = new Tetrominos(tetrominos);
         temp.setAngle(temp.getAngle()+Math.toRadians(nbr*10));
         temp.rotation();
         if(temp.testDeplacement(matrix)) tetrominos =temp;
-        
         myView.afficher(matrix,tetrominos);
     }
     // Clears the matrix

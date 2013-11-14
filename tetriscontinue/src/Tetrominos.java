@@ -79,10 +79,12 @@ public class Tetrominos {
   
   void mettreAJour(int x, int y, int taille)
   {
+       int dx=(x-coordonne.x);
       coordonne.x=x;
+     
        for (int row=0;row<listeCarre.length;row++) {
                         for (int col=0;col<listeCarre[0].length;col++) {
-                                ((Rectangle2D)listeCarre[row][col].getRectangle()).setRect(coordonne.x+row*taille, coordonne.y+col*taille, taille, taille);
+                            listeCarre[row][col].changerCoordonne(0, dx, taille);
                         }
                 }
   }

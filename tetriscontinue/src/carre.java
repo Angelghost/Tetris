@@ -21,7 +21,7 @@ import java.awt.geom.*;
  */
 public class carre {
     
-    private Shape carre;
+    private Polygon carre;
     private Color couleur;
     private int plein;
     
@@ -33,21 +33,29 @@ public class carre {
     }
     public carre(int i,int j,int taille,Color couleur,int plein)
     {
-        carre=new Rectangle2D.Double(j,i,taille,taille);
+        carre=new Polygon();
+        carre.addPoint(j, i);
+        carre.addPoint(j+taille, i);
+        carre.addPoint(j+taille, i+taille);
+        carre.addPoint(j, i+taille);
         this.couleur=couleur;
         this.plein=plein;
     }
     public carre(carre temp)
     {
-        carre=new Rectangle2D.Double(temp.getRectangle().getBounds2D().getX(),temp.getRectangle().getBounds2D().getY(),temp.getRectangle().getBounds2D().getHeight(),temp.getRectangle().getBounds2D().getWidth());
+        carre=new Polygon();
+        for(int i=0;i<temp.getRectangle().npoints;i++)
+        {
+            carre.addPoint(temp.getRectangle().xpoints[i],temp.getRectangle().ypoints[i]);
+        }
         couleur=temp.couleur;
         plein=temp.plein;
     }
-    public Shape getRectangle()
+    public Polygon getRectangle()
     {     
         return carre;
     }
-    public void setCarre(Rectangle2D r)
+    public void setCarre(Polygon r)
     {
         carre=r;
     }
@@ -62,7 +70,7 @@ public class carre {
     public void paintCarre(Graphics2D g2d)
     {
         g2d.setColor(couleur);
-        if(plein == 1) g2d.draw(carre);
+        if(plein == 1) g2d.drawPolygon(carre);
           g2d.setColor(Color.black);
     }
     
@@ -70,7 +78,26 @@ public class carre {
     {
         AffineTransform transform = new AffineTransform();
         transform.setToRotation(angle,centre.x, centre.y);
-        carre=transform.createTransformedShape(carre);
+        
+        int[] x = carre.xpoints;
+        int[] y = carre.ypoints;
+        int[] rx = new int[x.length];
+        int[] ry = new int[y.length];
 
+        for(int i=0; i<carre.npoints; i++){
+          Point p = new Point(x[i], y[i]);
+          transform.transform(p, p);
+          rx[i]=p.x;
+          ry[i]=p.y;
+        }
+
+        carre = new Polygon(rx, ry, carre.npoints);
+        
+
+    }
+    
+    public void changerCoordonne(int i, int j , int taille)
+    {
+        carre.translate(j,i);
     }
 }
