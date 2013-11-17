@@ -16,26 +16,26 @@ public class model {
     private int NUM_BLOCKS_Y = 22;
     private int taill_block = 20;
     private Timer timer1;
-    
     private carre[][] matrix = new carre[NUM_BLOCKS_Y][NUM_BLOCKS_X];
     
     private view myView;
     
     public model () {
     }
-
+    
     public model(view myView2){
         
         this.myView=myView2;
-        timer1=new Timer(250,new ActionListener(){
+        
+        timer1=new Timer(500,new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-                     
+                        deplacerTetrominosY(0,taill_block);
                     }
                 });
         timer1.start();
         
     }
-    public Tetrominos getNextTetrominos () {
+  public Tetrominos getNextTetrominos () {
         return nextTetrominos;
     }
 
@@ -80,10 +80,25 @@ public class model {
         myView.afficher(matrix,tetrominos);
  
     }
+    public void deplacerTetrominosY(int x,int y){//regler les probleme
+
+        Tetrominos temp = new Tetrominos(tetrominos);
+        temp.mettreAJourY(x,y,taill_block);
+        if(temp.testDeplacement(matrix)) tetrominos=temp;
+        else
+        {
+            tetrominos.placer(matrix);
+            tetrominos=new Tetrominos();
+            myView.afficher(matrix,temp);
+            
+        }
+        myView.afficher(matrix,tetrominos);
+        
+ 
+    }
     public void rotationTetrominos(int nbr){
         Tetrominos temp = new Tetrominos(tetrominos);
-        temp.setAngle(temp.getAngle()+Math.toRadians(nbr*10));
-        temp.rotation();
+        temp.rotation(nbr,Math.toRadians(10));
         if(temp.testDeplacement(matrix)) tetrominos =temp;
         myView.afficher(matrix,tetrominos);
     }
@@ -91,9 +106,9 @@ public class model {
     private void clearMatrix() {
                 for (int row=0;row<matrix.length;row++) {
                         for (int col=0;col<matrix[0].length;col++) {
-                                matrix[row][col] = new carre(row*taill_block,col*taill_block,taill_block,Color.WHITE,0);
+                                matrix[row][col] = new carre(row*taill_block,col*taill_block,taill_block,Color.WHITE,0,new Point(row*taill_block+taill_block/2,col*taill_block+taill_block/2));
                                 if(col==0 || row ==0 ||col == matrix[0].length-1  || row ==matrix.length -1)
-                                    matrix[row][col] = new carre(row*taill_block,col*taill_block,taill_block,Color.BLACK,1);
+                                    matrix[row][col] = new carre(row*taill_block,col*taill_block,taill_block,Color.BLACK,1,new Point(row*taill_block+taill_block/2,col*taill_block+taill_block/2));
                         }
                 }
         }

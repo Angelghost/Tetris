@@ -46,7 +46,7 @@ public class persoPanel extends JPanel{
     g2d.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
     super.paintComponent(g2d);
     Rectangle2D r2d;
-    AffineTransform transform ;
+    AffineTransform transform = new AffineTransform() ;
     Shape rotatedRect;
  
     if(matrix != null)
@@ -56,21 +56,39 @@ public class persoPanel extends JPanel{
           for(int j=0;j<matrix[i].length;j++)
             {
                 matrix[i][j].paintCarre(g2d);
+ 
             }
         }
     }
 
+     for(int i=0;i<tetrominos.listeCarre.length;i++)
+        {
+          for(int j=0;j<tetrominos.listeCarre[i].length;j++)
+            {
+                if(tetrominos.listeCarre[i][j].getPlein() == 1)
+                {
+                    g2d.draw(tetrominos.listeCarre[i][j].getBound());
+                   
+                }
+            }
+        }
+    g2d.setTransform(transform);
+    g2d.rotate(tetrominos.getAngle(),tetrominos.getCenter().x, tetrominos.getCenter().y);
     if(tetrominos != null)
     {
         for(int i=0;i<tetrominos.listeCarre.length;i++)
         {
           for(int j=0;j<tetrominos.listeCarre[i].length;j++)
             {
-               tetrominos.listeCarre[i][j].paintCarre(g2d);
+                if(tetrominos.listeCarre[i][j].getPlein() == 1)
+                {
+                    tetrominos.listeCarre[i][j].paintCarre(g2d);
+                   
+                }
             }
         }
     }
-    
+     
 }
     
 }

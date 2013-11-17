@@ -15,49 +15,48 @@
  */
 import java.awt.*;
 import java.awt.geom.*;
+
 /**
  *
  * @author Akmale
  */
-public class carre {
+public class carre extends Rectangle{
     
-    private Polygon carre;
     private Color couleur;
+    private Point2D center;
     private int plein;
-    
+    private int taill_block;
    public carre()
     {
-        carre=null;
+        
         couleur=null;
         plein=0;
     }
-    public carre(int i,int j,int taille,Color couleur,int plein)
+    public carre(int j,int i,int taille,Color couleur,int plein,Point Center)
     {
-        carre=new Polygon();
-        carre.addPoint(j, i);
-        carre.addPoint(j+taille, i);
-        carre.addPoint(j+taille, i+taille);
-        carre.addPoint(j, i+taille);
+        super(i,j,taille,taille);
+        
+        center=new Point2D.Double(Center.x,Center.y);
         this.couleur=couleur;
         this.plein=plein;
+        taill_block=taille;
     }
     public carre(carre temp)
     {
-        carre=new Polygon();
-        for(int i=0;i<temp.getRectangle().npoints;i++)
-        {
-            carre.addPoint(temp.getRectangle().xpoints[i],temp.getRectangle().ypoints[i]);
-        }
+        super(temp.x,temp.y,temp.height,temp.width);
+        center=new Point2D.Double(temp.center.getX(),temp.center.getY());
         couleur=temp.couleur;
         plein=temp.plein;
+        taill_block=temp.taill_block;
     }
-    public Polygon getRectangle()
-    {     
-        return carre;
-    }
-    public void setCarre(Polygon r)
+    
+    public Point2D getCenter()
     {
-        carre=r;
+        return this.center;
+    }
+    public Rectangle2D getBound()
+    {
+        return new Rectangle2D.Double(2+center.getY()-taill_block/2,2+ center.getX()-taill_block/2, taill_block-4,taill_block-4);
     }
     public Color getCouleur()
     {
@@ -70,34 +69,29 @@ public class carre {
     public void paintCarre(Graphics2D g2d)
     {
         g2d.setColor(couleur);
-        if(plein == 1) g2d.drawPolygon(carre);
+        if(plein == 1){
+            g2d.draw(this);
+            g2d.setColor(Color.black);
+            //g2d.draw(this);
+        }
           g2d.setColor(Color.black);
     }
-    
-    public void carreRotation(double angle,Point centre)
+    public void rotationCenter(double angle,Point2D cTetrominos)
     {
         AffineTransform transform = new AffineTransform();
-        transform.setToRotation(angle,centre.x, centre.y);
+       
+        transform.rotate(-angle, cTetrominos.getY(), cTetrominos.getX());
+        Point2D temp=new Point2D.Double();
+        transform.transform(this.center, temp);
         
-        int[] x = carre.xpoints;
-        int[] y = carre.ypoints;
-        int[] rx = new int[x.length];
-        int[] ry = new int[y.length];
-
-        for(int i=0; i<carre.npoints; i++){
-          Point p = new Point(x[i], y[i]);
-          transform.transform(p, p);
-          rx[i]=p.x;
-          ry[i]=p.y;
-        }
-
-        carre = new Polygon(rx, ry, carre.npoints);
-        
-
+        this.center=temp;
     }
+    
     
     public void changerCoordonne(int i, int j , int taille)
     {
-        carre.translate(j,i);
+        this.translate(j,i);
+        this.center= new Point2D.Double(i+center.getX(),j+center.getY());
+        
     }
 }

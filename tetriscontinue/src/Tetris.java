@@ -23,7 +23,9 @@ public class Tetris extends javax.swing.JFrame {
         
         this.setContentPane(((panel)viewTetris).monPanel);
         initComponents();
+        
         modelTetris.start();
+       
     }
 
     /**
