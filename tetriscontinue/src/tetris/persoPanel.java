@@ -74,24 +74,17 @@ public class persoPanel extends JPanel{
     g2d.rotate(tetrominos.getAngle(),tetrominos.getCenter().x, tetrominos.getCenter().y);
     if(tetrominos != null)
     {
-        for(int i=0;i<tetrominos.listeCarre.length;i++)
+        for(carre c: tetrominos.vecCarre)
         {
-          for(int j=0;j<tetrominos.listeCarre[i].length;j++)
-            {
-                if(tetrominos.listeCarre[i][j].getPlein() == 1)
-                {
-                    g2d.setColor(tetrominos.listeCarre[i][j].getCouleur());
-                        if(tetrominos.listeCarre[i][j].getPlein() == 1){
-                            g2d.fill(tetrominos.listeCarre[i][j]);
+            g2d.setColor(c.getCouleur());
+                        if(c.getPlein() == 1){
+                            g2d.fill(c);
                             g2d.setColor(Color.black);
-                            g2d.draw(tetrominos.listeCarre[i][j]);
+                            g2d.draw(c);
                         }
                           g2d.setColor(Color.black);
- 
-                   
-                }
-            }
         }
+       
     }
      
 }

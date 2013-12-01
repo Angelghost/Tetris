@@ -16,7 +16,10 @@ public class panel extends view {
     // </editor-fold> 
     public panel () {
     }
-    
+    public persoPanel getPanel()
+    {
+        return (persoPanel)monPanel;
+    }
     @Override
     public void afficher(carre[][] matrix,Tetrominos tetrominos) {
         

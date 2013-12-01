@@ -70,6 +70,7 @@ public class Tetris extends javax.swing.JFrame {
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
        if (SwingUtilities.isLeftMouseButton(evt)) {
+                    if(timer1 != null) timer1.stop();
                     timer1=new Timer(100,new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         modelTetris.rotationTetrominos(-1);
@@ -77,6 +78,7 @@ public class Tetris extends javax.swing.JFrame {
                 });
             }
        else if(SwingUtilities.isRightMouseButton(evt)){
+           if(timer1 != null) timer1.stop();
            timer1=new Timer(100,new ActionListener(){
                     public void actionPerformed(ActionEvent e){
                         modelTetris.rotationTetrominos(1);

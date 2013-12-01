@@ -67,38 +67,39 @@ public class model {
         this.tetrominos = val;
     }
     
-    public void start()
+    synchronized public void start()
     {
         clearMatrix();
         myView.afficher(matrix,tetrominos);
         
     }
     
-    public void deplacerTetrominos(int x,int y){//regler les probleme
-
+    synchronized public void deplacerTetrominos(int x,int y){//regler les probleme
+        if(x > this.NUM_BLOCKS_X*taill_block) return;
         Tetrominos temp = new Tetrominos(tetrominos);
         temp.mettreAJour(x,y,taill_block);
         if(temp.testDeplacement(matrix)) tetrominos=temp;
         myView.afficher(matrix,tetrominos);
  
     }
-    public void deplacerTetrominosY(int x,int y){//regler les probleme
+    synchronized public void deplacerTetrominosY(int x,int y){//regler les probleme
 
         Tetrominos temp = new Tetrominos(tetrominos);
         temp.mettreAJourY(x,y,taill_block);
         if(temp.testDeplacement(matrix)) tetrominos=temp;
         else
         {
-            tetrominos.placer(matrix);
+            if(tetrominos.placer(matrix,myView)){
             tetrominos=new Tetrominos();
             myView.afficher(matrix,temp);
+            }
             
         }
         myView.afficher(matrix,tetrominos);
         
  
     }
-    public void rotationTetrominos(int nbr){
+    synchronized public void rotationTetrominos(int nbr){
         Tetrominos temp = new Tetrominos(tetrominos);
         temp.rotation(nbr,Math.toRadians(10));
         if(temp.testDeplacement(matrix)) tetrominos =temp;
