@@ -67,14 +67,14 @@ public class model {
         this.tetrominos = val;
     }
     
-    synchronized public void start()
+    public void start()
     {
         clearMatrix();
         myView.afficher(matrix,tetrominos);
         
     }
     
-    synchronized public void deplacerTetrominos(int x,int y){//regler les probleme
+     synchronized void deplacerTetrominos(int x,int y){//regler les probleme
         if(x > this.NUM_BLOCKS_X*taill_block) return;
         Tetrominos temp = new Tetrominos(tetrominos);
         temp.mettreAJour(x,y,taill_block);
@@ -82,7 +82,7 @@ public class model {
         myView.afficher(matrix,tetrominos);
  
     }
-    synchronized public void deplacerTetrominosY(int x,int y){//regler les probleme
+   synchronized public void deplacerTetrominosY(int x,int y){//regler les probleme
 
         Tetrominos temp = new Tetrominos(tetrominos);
         temp.mettreAJourY(x,y,taill_block);
@@ -90,6 +90,7 @@ public class model {
         else
         {
             if(tetrominos.placer(matrix,myView)){
+            //testFinLigne();    
             tetrominos=new Tetrominos();
             myView.afficher(matrix,temp);
             }
@@ -117,12 +118,28 @@ public class model {
         }
     
     public void testFinLigne(){
-        
+        int continuer =1;
+        for (int row=matrix.length-1;row>-1;row--) {
+                        for (int col=matrix[0].length-1;col>-1;col--) {
+                                continuer =1;
+                                if(matrix[row][col].getPlein() == 0)
+                                    continuer =0 ;
+                        }
+                        if(continuer == 1)
+                        {
+                            UpMatrix(row);
+                            row++;
+                        }
+                }
     }
     
-    public void UpMatrix()
+    public void UpMatrix(int rowI)
     {
-        
+        for (int row=rowI;row>-1;row--) {
+                        for (int col=matrix[0].length-1;col<-1;col--) {
+                            matrix[row][col]=matrix[row-1][col];
+                        }
+            }
     }
 }
 

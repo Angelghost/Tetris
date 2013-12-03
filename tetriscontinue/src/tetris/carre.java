@@ -52,11 +52,11 @@ public class carre extends Rectangle{
         taill_block=temp.taill_block;
     }
     
-    public Point2D getCenter()
+   synchronized  public Point2D getCenter()
     {
         return this.center;
     }
-    public Rectangle2D getBound()
+    synchronized  public Rectangle2D getBound()
     {
         return new Rectangle2D.Double(1+center.getY()-taill_block/2,1+ center.getX()-taill_block/2, taill_block-2,taill_block-2);
     }
@@ -64,12 +64,12 @@ public class carre extends Rectangle{
     {
         return couleur;
     }
-    public int getPlein()
+    synchronized public int getPlein()
     {
         return plein;
     }
     
-    public void rotationCenter(double angle,Point2D cTetrominos)
+    synchronized  public void rotationCenter(double angle,Point2D cTetrominos)
     {
         AffineTransform transform = new AffineTransform();
        
@@ -81,7 +81,7 @@ public class carre extends Rectangle{
     }
     
     
-    public void changerCoordonne(int i, int j , int taille)
+    synchronized  public void changerCoordonne(int i, int j , int taille)
     {
         this.translate(j,i);
         this.center= new Point2D.Double(i+center.getX(),j+center.getY());

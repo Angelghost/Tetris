@@ -22,6 +22,13 @@ public class persoPanel extends JPanel{
     private carre[][] matrix ;
     private int taill_block =20;
     private Tetrominos tetrominos; 
+   private int scale; 
+   
+   public persoPanel(int Scale)
+   {
+       super();
+       this.scale=Scale;
+   }
    
     public void setTaille(int taille)
     {
@@ -50,7 +57,9 @@ public class persoPanel extends JPanel{
     Rectangle2D r2d;
     AffineTransform transform = new AffineTransform() ;
     Shape rotatedRect;
- 
+    transform.setToScale(scale, scale);
+    transform.concatenate(g2d.getTransform());
+    g2d.setTransform(transform);
     if(matrix != null)
     {
         for(int i=0;i<matrix.length;i++)
@@ -63,9 +72,10 @@ public class persoPanel extends JPanel{
                     g2d.fill(matrix[i][j]);
                     g2d.setColor(Color.black);
                     g2d.draw(matrix[i][j]);
+                    g2d.draw(matrix[i][j].getBound());
                 }
                   g2d.setColor(Color.black);
- 
+                g2d.draw(matrix[i][j]);    
             }
         }
     }

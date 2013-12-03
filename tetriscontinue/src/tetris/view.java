@@ -5,12 +5,15 @@ public abstract class view {
     // The views width and height
     private int viewHeight = 0;
     private int viewWidth = 0;
-        
+    private int scale =2;    
         
     public view () {
     }
     
-    
+    public int getScale()
+    {
+        return scale;
+    }
     public int getViewHeight () {
         return viewHeight;
     }

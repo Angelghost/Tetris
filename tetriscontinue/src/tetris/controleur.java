@@ -9,13 +9,17 @@ public abstract class controleur {
 
     public model myModel;
     private savFile mySavFile;
+    private int scale =2;
     
     public controleur (model myModel) {
         this.myModel=myModel;
         
         
     }
-    
+    public int getScale()
+    {
+        return scale;
+    }
     public void addSavFile(String name)
     {
         mySavFile=new savFile(name);
