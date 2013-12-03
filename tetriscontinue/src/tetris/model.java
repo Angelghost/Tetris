@@ -90,7 +90,7 @@ public class model {
         else
         {
             if(tetrominos.placer(matrix,myView)){
-            //testFinLigne();    
+            testFinLigne();    
             tetrominos=new Tetrominos();
             myView.afficher(matrix,temp);
             }
@@ -119,27 +119,31 @@ public class model {
     
     public void testFinLigne(){
         int continuer =1;
-        for (int row=matrix.length-1;row>-1;row--) {
-                        for (int col=matrix[0].length-1;col>-1;col--) {
-                                continuer =1;
-                                if(matrix[row][col].getPlein() == 0)
-                                    continuer =0 ;
-                        }
-                        if(continuer == 1)
-                        {
-                            UpMatrix(row);
-                            row++;
-                        }
+        for (int row=matrix.length-2;row>0;row--) {
+            continuer =1;            
+            for (int col=matrix[0].length-1;col>-1;col--) {
+                    if(matrix[row][col].getPlein() == 0)
+                        continuer =0 ;
                 }
+                if(continuer == 1)
+                {
+                    UpMatrix(row);
+                    row++;
+                }
+           }
     }
     
     public void UpMatrix(int rowI)
     {
-        for (int row=rowI;row>-1;row--) {
-                        for (int col=matrix[0].length-1;col<-1;col--) {
+        //changer laffectation des matrix
+        for (int row=rowI;row>1;row--) {
+                        for (int col=matrix[0].length-1;col>-1;col--) {
                             matrix[row][col]=matrix[row-1][col];
                         }
             }
+        for (int col=matrix[0].length-2;col>0;col--) {
+                            matrix[0][col]=new carre(1*taill_block,col*taill_block,taill_block,Color.BLACK,1,new Point(1*taill_block+taill_block/2,col*taill_block+taill_block/2));
+                        }
     }
 }
 
