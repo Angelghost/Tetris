@@ -9,7 +9,7 @@ import java.util.Random;
 import java.awt.*;
 
 public class Tetrominos {
-    private int taill_block =20;
+    public int taill_block =20;
     private char color;
     private double angle = 0;
     public Point coordonne=new Point(20,20);
@@ -18,7 +18,7 @@ public class Tetrominos {
      
     public Tetrominos () {
 
-        this.tetrominosFactory();
+        
     }
      public Tetrominos (Tetrominos temp) {
         angle=temp.angle;
@@ -42,7 +42,7 @@ public class Tetrominos {
     {
         return new Point(coordonne.x+2*taill_block,coordonne.y+2*taill_block);
     }
-  synchronized boolean testDeplacement(carre[][] matrix)
+  boolean testDeplacement(carre[][] matrix)
   {
       for (int row=0;row<matrix.length;row++) {
             for (int col=0;col<matrix[0].length;col++) {
@@ -58,69 +58,8 @@ public class Tetrominos {
       }
       return true;
   }
-  void tetrominosFactory() // peut etre mettre le random ailleur
-  {
-      Random generator = new Random(); 
-      int random =generator.nextInt(6)+ 1;
-      System.out.print(random);
-      Color tempColor;
-      switch(random)
-      {
-          case 1 :
-            tempColor=Color.BLUE;
-            vecCarre.add(new carre(coordonne.y+0,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+0*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));         
-            vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+3*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+3*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
 
-              break;
-         case 2 :
-            tempColor=Color.MAGENTA;
-            vecCarre.add(new carre(coordonne.y+0,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+0*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+0*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
-            
-                 break;
-          case 3 :
-            tempColor=Color.GREEN;
-            vecCarre.add(new carre(coordonne.y+0,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+0*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+0*taill_block,taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+0*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
-            
-            
-              break;
-          case 4 :
-            tempColor=Color.LIGHT_GRAY;
-            vecCarre.add(new carre(coordonne.y+0*taill_block,coordonne.x+0*taill_block,taill_block,tempColor,1,new Point(coordonne.x+0*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+0*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-            
-              break;
-            case 5 :
-            tempColor=Color.YELLOW;
-            vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+2*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+2*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+2*taill_block,taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+2*taill_block+taill_block/2)));
-            
-            break; 
-          default:
-            tempColor=Color.RED;
-            vecCarre.add(new carre(coordonne.y+0,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+0*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-            vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+0,taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
-            
-              break;
-      
-                  
-      }
-      
-  }
-  synchronized public boolean placer(carre[][] matrix,view myView)
+  public boolean placer(carre[][] matrix,view myView)
   {
       double temp;
       
@@ -240,7 +179,7 @@ public class Tetrominos {
   }
 
   
-  synchronized void mettreAJour(int x, int y, int taille)
+   void mettreAJour(int x, int y, int taille)
   {
        int dx=(x-(coordonne.x+2*taill_block));
       coordonne.x=x-2*taill_block;
@@ -249,7 +188,7 @@ public class Tetrominos {
       }
 
   }
-  synchronized void mettreAJourY(int x, int y, int taille)
+   void mettreAJourY(int x, int y, int taille)
   {
       
       coordonne.y+=y;
@@ -261,7 +200,7 @@ public class Tetrominos {
   
   
   
-  synchronized void rotation(int sens,double angle)
+   void rotation(int sens,double angle)
   {
       
        this.angle+=sens*angle;

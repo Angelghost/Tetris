@@ -10,10 +10,10 @@ public abstract class controleur {
     public model myModel;
     private savFile mySavFile;
     private int scale =2;
-    
-    public controleur (model myModel) {
+    public int type;
+    public controleur (model myModel,int type) {
         this.myModel=myModel;
-        
+        this.type=type;
         
     }
     public int getScale()
@@ -23,6 +23,10 @@ public abstract class controleur {
     public void addSavFile(String name)
     {
         mySavFile=new savFile(name);
+    }
+    public savFile getSaveFile()
+    {
+        return mySavFile;
     }
     public abstract void gestionTouche(Object o);
 

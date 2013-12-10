@@ -9,15 +9,14 @@ public class model {
 
     
     private int score = 0;
-    private option myOption;
-    private Tetrominos tetrominos=new Tetrominos();
+    private Tetrominos tetrominos;
 
     private Tetrominos nextTetrominos;
     // Tetris has a default size of 10x20 blocks
     private int NUM_BLOCKS_X = 12;
     private int NUM_BLOCKS_Y = 22;
-    private int taill_block = 20;
-    private Timer timer1;
+    public static int taill_block = 20;
+    public Timer timer1;
     private carre[][] matrix = new carre[NUM_BLOCKS_Y][NUM_BLOCKS_X];
     
     private view myView;
@@ -28,13 +27,10 @@ public class model {
     public model(view myView2){
         
         this.myView=myView2;
+        tetrominosFactory.setNameFileSav("test.seq");
+        System.out.print(tetrominosFactory.fileName);
+        tetrominos=tetrominosFactory.randTetrominos();
         
-        timer1=new Timer(500,new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                        deplacerTetrominosY(0,taill_block);
-                    }
-                });
-        timer1.start();
         
     }
   public Tetrominos getNextTetrominos () {
@@ -91,7 +87,7 @@ public class model {
         {
             if(tetrominos.placer(matrix,myView)){
             testFinLigne();    
-            tetrominos=new Tetrominos();
+            tetrominos=tetrominosFactory.randTetrominos();
             myView.afficher(matrix,temp);
             }
             
@@ -137,13 +133,11 @@ public class model {
     {
         //changer laffectation des matrix
         for (int row=rowI;row>1;row--) {
-                        for (int col=matrix[0].length-1;col>-1;col--) {
-                            matrix[row][col]=matrix[row-1][col];
+                        for (int col=matrix[0].length-2;col>0;col--) {
+                            matrix[row][col].changeCarre(matrix[row-1][col]);
                         }
             }
-        for (int col=matrix[0].length-2;col>0;col--) {
-                            matrix[0][col]=new carre(1*taill_block,col*taill_block,taill_block,Color.BLACK,1,new Point(1*taill_block+taill_block/2,col*taill_block+taill_block/2));
-                        }
+
     }
 }
 

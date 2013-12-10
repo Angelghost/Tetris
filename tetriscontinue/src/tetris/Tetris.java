@@ -11,23 +11,24 @@ package tetris;
  */
 import java.awt.event.*;
 import javax.swing.*;
+import static tetris.model.taill_block;
 public class Tetris extends javax.swing.JFrame {
 
     /**
      * Creates new form Tetris
      */
-    private view viewTetris = new panel();
-    
-    private model modelTetris =new model(viewTetris);
-    private controleur controleurTetris = new souris(modelTetris);
+    public static  view viewTetris = new panel();
+    public static model modelTetris =new model(viewTetris);
+    public static  controleur controleurTetris ;
     private Timer timer1;
     public Tetris() {
         
         this.setContentPane(((panel)viewTetris).monPanel);
+        this.setExtendedState(this.MAXIMIZED_BOTH); 
+       // this.setUndecorated(true);  
         initComponents();
-        
-        modelTetris.start();
-       
+     
+    
     }
 
     /**
@@ -69,34 +70,47 @@ public class Tetris extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-       if (SwingUtilities.isLeftMouseButton(evt)) {
-                    if(timer1 != null) timer1.stop();
-                    timer1=new Timer(100,new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                        modelTetris.rotationTetrominos(-1);
-                    }
-                });
-            }
-       else if(SwingUtilities.isRightMouseButton(evt)){
-           if(timer1 != null) timer1.stop();
-           timer1=new Timer(100,new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                        modelTetris.rotationTetrominos(1);
-                    }
-                });
-           
-       }
+     
+        if(controleurTetris.type == 2)
+        {
+                if (SwingUtilities.isLeftMouseButton(evt)) {
+                        if(timer1 != null) timer1.stop();
+                        timer1=new Timer(100,new ActionListener(){
+                        public void actionPerformed(ActionEvent e){
+                            savFile.addRotation(-1);
+                            modelTetris.rotationTetrominos(-1);
+                        }
+                    });
+                }
+           else if(SwingUtilities.isRightMouseButton(evt)){
+               if(timer1 != null) timer1.stop();
+               timer1=new Timer(100,new ActionListener(){
+                        public void actionPerformed(ActionEvent e){
+                            savFile.addRotation(1);
+                            modelTetris.rotationTetrominos(1);
+                        }
+                    });
 
-       timer1.start();
+           }
+
+           timer1.start();
+        }
+        
     }//GEN-LAST:event_formMousePressed
 
     private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
-        controleurTetris.gestionTouche(evt);
+        if(controleurTetris.type == 2)
+        {
+            controleurTetris.gestionTouche(evt);
+        }
     }//GEN-LAST:event_formMouseMoved
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
-        timer1.stop();
-
+        
+        if(controleurTetris.type == 2)
+        {
+            timer1.stop();
+        } 
     }//GEN-LAST:event_formMouseReleased
 
     /**
@@ -125,15 +139,46 @@ public class Tetris extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Tetris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
+        option myOption=new option();
+            
+        myOption.setVisible(true);
+        
+                   /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tetris().setVisible(true);
+                Tetris myTetris = new Tetris();
+                System.out.println("Le nom du thread principal est " + Thread.currentThread().getName());
+  
+                    controleurTetris =new lecteurSeq(modelTetris,"test.sav");
+                       // controleurTetris = new souris(modelTetris);
+                    myTetris.setVisible(true);  
+                    myTetris.controleurTetris.addSavFile("test.sav");
+                    myTetris.modelTetris.start();
+                    if(controleurTetris.type ==2)
+                    {
+                        myTetris.modelTetris.timer1=new Timer(500,new ActionListener(){
+                            public void actionPerformed(ActionEvent e){
+                                modelTetris.deplacerTetrominosY(0,taill_block);
+                               savFile.addDesc(0, taill_block);
+                            }
+                        });
+                        myTetris.modelTetris.timer1.start();
+                    }
+                    if(controleurTetris.type ==1)
+                        {
+                             myTetris.modelTetris.timer1=new Timer(10,new ActionListener(){
+                           public void actionPerformed(ActionEvent e){
+                                    controleurTetris.gestionTouche(null);
+                                }
+                            });
+                        myTetris.modelTetris.timer1.start();
+                    } 
                 
-               
+              
             }
         });
+
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

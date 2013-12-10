@@ -10,13 +10,13 @@ public class souris extends controleur {
     
     public souris (model myModel) {
         
-        super(myModel);
+        super(myModel,2);
     }
 
     @Override
     public void gestionTouche(Object o){
             MouseEvent evt = (MouseEvent)o;
-            
+            savFile.addMove((int)evt.getX()/getScale(),(int)evt.getY()/getScale());
             myModel.deplacerTetrominos(evt.getX()/getScale(),evt.getY()/getScale());
     }
 }

@@ -58,6 +58,7 @@ public class persoPanel extends JPanel{
     AffineTransform transform = new AffineTransform() ;
     Shape rotatedRect;
     transform.setToScale(scale, scale);
+    transform.translate(100, 10);
     transform.concatenate(g2d.getTransform());
     g2d.setTransform(transform);
     if(matrix != null)
@@ -74,8 +75,7 @@ public class persoPanel extends JPanel{
                     g2d.draw(matrix[i][j]);
                     g2d.draw(matrix[i][j].getBound());
                 }
-                  g2d.setColor(Color.black);
-                g2d.draw(matrix[i][j]);    
+                  g2d.setColor(Color.black);    
             }
         }
     }

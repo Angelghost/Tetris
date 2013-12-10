@@ -17,7 +17,7 @@ public class clavier extends controleur {
   
     public clavier (model myModel) {
         
-        super(myModel);
+        super(myModel,3);
     }
 
     @Override
