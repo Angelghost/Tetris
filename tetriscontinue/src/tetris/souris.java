@@ -15,8 +15,8 @@ public class souris extends controleur {
     @Override
     public void gestionTouche(Object o){
             MouseEvent evt = (MouseEvent)o;
-            savFile.addMove((int)evt.getX()/getScale(),(int)evt.getY()/getScale());
-            myModel.deplacerTetrominosX(evt.getX()/getScale());
+            savFile.addMove((int)(evt.getX()/option.scale),(int)(evt.getY()/option.scale));
+            myModel.deplacerTetrominosX((int)(evt.getX()/option.scale));
     }
 }
 

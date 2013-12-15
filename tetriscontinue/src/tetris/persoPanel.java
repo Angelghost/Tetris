@@ -18,20 +18,13 @@ import java.awt.*;
 public class persoPanel extends JPanel{
     
     private carre[][] matrix ;
-    private int taill_block =20;
     private Tetrominos tetrominos; 
-   private int scale; 
    
-   public persoPanel(int Scale)
+   public persoPanel()
    {
        super();
-       this.scale=Scale;
    }
    
-    public void setTaille(int taille)
-    {
-        taill_block=taille;
-    }
     public void setMatrix(carre[][] matrix)
     {
         this.matrix=matrix;
@@ -53,8 +46,9 @@ public class persoPanel extends JPanel{
     g2d.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
     super.paintComponent(g2d);
     AffineTransform transform = new AffineTransform() ;
-    transform.setToScale(scale, scale);
-    transform.translate(100, 10);
+   
+    transform.setToScale(option.scale, option.scale);
+    transform.translate(option.position.x, option.position.y);
     transform.concatenate(g2d.getTransform());
     g2d.setTransform(transform);
     if(matrix != null)
@@ -66,7 +60,6 @@ public class persoPanel extends JPanel{
                     g2d.fill(matrix11);
                     g2d.setColor(Color.black);
                     g2d.draw(matrix11);
-                    g2d.draw(matrix11.getBound());
                 }
                 g2d.setColor(Color.black);    
             }
