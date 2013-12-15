@@ -1,12 +1,8 @@
 package tetris;
 
-import java.awt.Color;
 import java.awt.Point;
-import java.awt.geom.*;
 import java.util.ArrayList;
 import java.util.ListIterator;
-import java.util.Random;
-import java.awt.*;
 
 public class Tetrominos {
     public int taill_block =20;
@@ -49,9 +45,7 @@ public class Tetrominos {
                 for(carre c: vecCarre)
                 {
                     if(matrix[row][col].getBound().intersects(c.getBound()) && matrix[row][col].getPlein()==1 ) return false;
-                        
-                    // if(c.getBound().intersects(new Rectangle2D.Double(13*taill_block,0,800,600))) return false;
-                        
+                                           
                 }
 
            } 
@@ -148,47 +142,37 @@ public class Tetrominos {
            
             }
      
-      this.mettreAJourY(0, taill_block, taill_block);
-        /*for(carre c : vecCarre){
-            Graphics2D g2d =(Graphics2D)((panel)myView).getPanel().getGraphics();
-              g2d.scale(2, 2);
-              g2d.setColor(Color.BLUE);
-               g2d.draw(c.getBound());
-              g2d.setColor(Color.yellow);
-          }*/
+      this.mettreAJourY(taill_block, taill_block);
+
       if(!this.testDeplacement(matrix)){
-        this.mettreAJourY(0,-taill_block, taill_block);  
+        this.mettreAJourY(-taill_block, taill_block);  
           for(carre c : vecCarre)
           {
-                        
-             
-              //Graphics2D g2d =(Graphics2D)((panel)myView).getPanel().getGraphics();
-              //g2d.scale(2, 2);
-            Point center = new Point((int)(c.getCenter().getX()/taill_block)*taill_block,(int)(c.getCenter().getY()/taill_block)*taill_block);
-           // g2d.setColor(Color.yellow);
-           // g2d.drawOval(center.y, center.x, 2, 2);
-            
-          matrix[center.x/taill_block][center.y/taill_block]= new carre(center.x,center.y,(int)taill_block,c.getCouleur(),1,new Point (center.x+taill_block/2,center.y+taill_block/2));
 
+            Point center = new Point((int)(c.getCenter().getX()/taill_block)*taill_block,(int)(c.getCenter().getY()/taill_block)*taill_block);
+            matrix[center.x/taill_block][center.y/taill_block]= new carre(center.x,center.y,(int)taill_block,c.getCouleur(),1,new Point (center.x+taill_block/2,center.y+taill_block/2));
           }
 
       return true;
       }
-     // this.mettreAJourY(0,-taill_block, taill_block);
+      else
+      {
+        this.mettreAJourY(-taill_block, taill_block);
+      }
       return false;
   }
 
   
-   void mettreAJour(int x, int y, int taille)
+   void mettreAJourX(int x, int taille)
   {
-       int dx=(x-(coordonne.x+2*taill_block));
+      int dx=(x-(coordonne.x+2*taill_block));
       coordonne.x=x-2*taill_block;
       for(carre c: vecCarre){
           c.changerCoordonne(0, dx, taille);   
       }
 
   }
-   void mettreAJourY(int x, int y, int taille)
+   void mettreAJourY(int y, int taille)
   {
       
       coordonne.y+=y;

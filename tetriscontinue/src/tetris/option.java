@@ -6,6 +6,9 @@
 
 package tetris;
 
+
+import java.util.*;
+import javax.swing.AbstractButton;
 /**
  *
  * @author Akmale
@@ -17,6 +20,7 @@ public class option extends javax.swing.JFrame {
      */
     public option() {
         initComponents();
+       
     }
 
     /**
@@ -28,25 +32,51 @@ public class option extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        controleurGroup = new javax.swing.ButtonGroup();
+        radioSouris = new javax.swing.JRadioButton();
+        radioClavier = new javax.swing.JRadioButton();
+        radioFichier = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
+        robotFile = new javax.swing.JTextField();
+        savFile = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jRadioButton2.setText("Souris");
+        controleurGroup.add(radioSouris);
+        radioSouris.setText("Souris");
+        radioSouris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioSourisActionPerformed(evt);
+            }
+        });
 
-        jRadioButton1.setText("Clavier");
+        controleurGroup.add(radioClavier);
+        radioClavier.setText("Clavier");
+        radioClavier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioClavierActionPerformed(evt);
+            }
+        });
 
-        jRadioButton3.setText("Lecture de fichier");
+        controleurGroup.add(radioFichier);
+        radioFichier.setText("Lecture de fichier");
+        radioFichier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioFichierActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Play");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        robotFile.setText("Fichier robot");
+        robotFile.setEnabled(false);
+
+        savFile.setText("Fichier de sauvegarde");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -56,25 +86,34 @@ public class option extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(jRadioButton2)
+                        .addComponent(radioSouris)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton3))
+                        .addComponent(radioClavier)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(radioFichier))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(82, 82, 82)
-                        .addComponent(jButton1)))
-                .addContainerGap(105, Short.MAX_VALUE))
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(robotFile)
+                            .addComponent(savFile))))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                    .addComponent(radioSouris)
+                    .addComponent(radioClavier)
+                    .addComponent(radioFichier))
+                .addGap(18, 18, 18)
+                .addComponent(robotFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(savFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(46, 46, 46))
         );
@@ -83,46 +122,52 @@ public class option extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        System.out.println("Le nom du thread principal est " + Thread.currentThread().getName());
-  
+       int controleur=0;
+        Enumeration elements = controleurGroup.getElements();
+            while (elements.hasMoreElements()) {
+              AbstractButton button = (AbstractButton)elements.nextElement();
+              if (button.isSelected()) {
+                switch(button.getText())
+                {
+                    case "Clavier":controleur = 3;
+                        break;
+                    case "Souris" :controleur = 2;
+                        break;
+                    case "Lecture de fichier":controleur = 1;
+                        break;
+                }
+              }
+            }
+            
+        
+            
+        main.startTetris(controleur,savFile.getText(),robotFile.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void radioFichierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioFichierActionPerformed
+        robotFile.setEnabled(true);
+    }//GEN-LAST:event_radioFichierActionPerformed
+
+    private void radioClavierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioClavierActionPerformed
+        robotFile.setEnabled(false);
+    }//GEN-LAST:event_radioClavierActionPerformed
+
+    private void radioSourisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioSourisActionPerformed
+         robotFile.setEnabled(false);
+    }//GEN-LAST:event_radioSourisActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(option.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(option.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(option.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(option.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup controleurGroup;
     private javax.swing.JButton jButton1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton radioClavier;
+    private javax.swing.JRadioButton radioFichier;
+    private javax.swing.JRadioButton radioSouris;
+    private javax.swing.JTextField robotFile;
+    private javax.swing.JTextField savFile;
     // End of variables declaration//GEN-END:variables
 }

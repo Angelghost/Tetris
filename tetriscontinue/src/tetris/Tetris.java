@@ -11,15 +11,14 @@ package tetris;
  */
 import java.awt.event.*;
 import javax.swing.*;
-import static tetris.model.taill_block;
 public class Tetris extends javax.swing.JFrame {
 
     /**
      * Creates new form Tetris
      */
-    public static  view viewTetris = new panel();
-    public static model modelTetris =new model(viewTetris);
-    public static  controleur controleurTetris ;
+    private view viewTetris = new panel();
+    private model modelTetris ;
+    private controleur controleurTetris ;
     private Timer timer1;
     public Tetris() {
         
@@ -113,72 +112,35 @@ public class Tetris extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_formMouseReleased
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tetris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tetris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tetris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tetris.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        option myOption=new option();
-            
-        myOption.setVisible(true);
-        
-                   /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Tetris myTetris = new Tetris();
-                System.out.println("Le nom du thread principal est " + Thread.currentThread().getName());
-  
-                    controleurTetris =new lecteurSeq(modelTetris,"test.sav");
-                       // controleurTetris = new souris(modelTetris);
-                    myTetris.setVisible(true);  
-                    myTetris.controleurTetris.addSavFile("test.sav");
-                    myTetris.modelTetris.start();
-                    if(controleurTetris.type ==2)
-                    {
-                        myTetris.modelTetris.timer1=new Timer(500,new ActionListener(){
-                            public void actionPerformed(ActionEvent e){
-                                modelTetris.deplacerTetrominosY(0,taill_block);
-                               savFile.addDesc(0, taill_block);
-                            }
-                        });
-                        myTetris.modelTetris.timer1.start();
-                    }
-                    if(controleurTetris.type ==1)
-                        {
-                             myTetris.modelTetris.timer1=new Timer(10,new ActionListener(){
-                           public void actionPerformed(ActionEvent e){
-                                    controleurTetris.gestionTouche(null);
-                                }
-                            });
-                        myTetris.modelTetris.timer1.start();
-                    } 
-                
-              
-            }
-        });
-
-        
+    public view getView()
+    {
+        return this.viewTetris;
+    }
+    
+    public controleur getControleur()
+    {
+        return this.controleurTetris;
+    }
+    
+    public model getModel()
+    {
+        return this.modelTetris;
+    }
+    
+    
+    public void setView(view myView)
+    {
+        this.viewTetris = myView;
+    }
+    
+    public void setControleur(controleur myCon)
+    {
+        this.controleurTetris= myCon;
+    }
+    
+    public void setModel(model mod)
+    {
+        this.modelTetris =  mod;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

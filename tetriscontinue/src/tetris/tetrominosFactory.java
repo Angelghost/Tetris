@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Point;
 import java.io.BufferedWriter;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -25,8 +26,23 @@ public class tetrominosFactory {
     public static FileWriter ecrivain;
     public static String seqName;
     public static BufferedReader buffSeq;
+    private static int modeCreation=1;
     
+    public static void setModCreation(int mode)
+    {
+        modeCreation=mode;
+    }
    
+    public static Tetrominos creationTetrominos()
+    {
+        switch(modeCreation)
+        {
+            case 1:return randTetrominos();
+            case 2:return seqTetrominos();
+        }   
+        
+        return null;
+    }
     public static void setNameFileSav(String name)
     {
         fileName=name;
@@ -45,7 +61,7 @@ public class tetrominosFactory {
         try{
              buffSeq = new BufferedReader(new FileReader(seqName));
         }
-        catch(IOException e)
+        catch(FileNotFoundException e)
         {
             System.out.print(e.getMessage());
             
@@ -68,8 +84,7 @@ public class tetrominosFactory {
     {
         try{
             BufferedWriter output = new BufferedWriter(ecrivain);
-            output.write(type+" \r\n");
-
+            output.write(type+"\r\n");
              output.flush();
 
            

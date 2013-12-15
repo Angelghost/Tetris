@@ -24,21 +24,16 @@ public class lecteurSeq extends controleur{
         String str = savFile.getNextMove();
 
                 String tab[]=str.split("/");
-
-                if("Rotation".equals(tab[0]))
-                {
-                    myModel.rotationTetrominos(Integer.parseInt(tab[1]));
+                switch (tab[0]) {
+                    case "Rotation":
+                        myModel.rotationTetrominos(Integer.parseInt(tab[1]));
+                        break;
+                    case "translation":
+                        myModel.deplacerTetrominosX(Integer.parseInt(tab[1]));
+                        break;
+                    case "incrementation":
+                        myModel.deplacerTetrominosY(model.taill_block);
+                        break;
                 }
-                else if("translation".equals(tab[0]))
-                {
-                    myModel.deplacerTetrominos(Integer.parseInt(tab[1]),Integer.parseInt(tab[2]));
-                }
-                else if("incrementation".equals(tab[0]))
-                {
-                     myModel.deplacerTetrominosY(0,model.taill_block);
-                }
-                str = savFile.getNextMove();
-
-
     }
 }

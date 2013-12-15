@@ -1,9 +1,6 @@
 package tetris;
 
-import java.awt.event.*;
 import javax.swing.*;
-import java.awt.Graphics2D;
-import java.awt.geom.*;
 import java.awt.*;
 public class model {
 
@@ -27,11 +24,8 @@ public class model {
     public model(view myView2){
         
         this.myView=myView2;
-        tetrominosFactory.setNameFileSav("test.seq");
-        System.out.print(tetrominosFactory.fileName);
-        tetrominos=tetrominosFactory.randTetrominos();
         
-        
+
     }
   public Tetrominos getNextTetrominos () {
         return nextTetrominos;
@@ -65,23 +59,25 @@ public class model {
     
     public void start()
     {
+        System.out.print(tetrominosFactory.fileName);
+        tetrominos=tetrominosFactory.creationTetrominos();
         clearMatrix();
         myView.afficher(matrix,tetrominos);
         
     }
     
-     synchronized void deplacerTetrominos(int x,int y){//regler les probleme
+     synchronized void deplacerTetrominosX(int x){//regler les probleme
         if(x > this.NUM_BLOCKS_X*taill_block) return;
         Tetrominos temp = new Tetrominos(tetrominos);
-        temp.mettreAJour(x,y,taill_block);
+        temp.mettreAJourX(x,taill_block);
         if(temp.testDeplacement(matrix)) tetrominos=temp;
         myView.afficher(matrix,tetrominos);
  
     }
-   synchronized public void deplacerTetrominosY(int x,int y){//regler les probleme
+   synchronized public void deplacerTetrominosY(int y){//regler les probleme
 
         Tetrominos temp = new Tetrominos(tetrominos);
-        temp.mettreAJourY(x,y,taill_block);
+        temp.mettreAJourY(y,taill_block);
         if(temp.testDeplacement(matrix)) tetrominos=temp;
         else
         {
