@@ -5,8 +5,6 @@ import javax.swing.JPanel;
 import java.awt.Graphics2D;
 import java.awt.geom.*;
 import java.awt.*;
-import java.awt.font.TextLayout;
-import java.awt.font.FontRenderContext;
 
 /*
  * To change this template, choose Tools | Templates
@@ -54,28 +52,23 @@ public class persoPanel extends JPanel{
     g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
     g2d.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
     super.paintComponent(g2d);
-    Rectangle2D r2d;
     AffineTransform transform = new AffineTransform() ;
-    Shape rotatedRect;
     transform.setToScale(scale, scale);
     transform.translate(100, 10);
     transform.concatenate(g2d.getTransform());
     g2d.setTransform(transform);
     if(matrix != null)
     {
-        for(int i=0;i<matrix.length;i++)
-        {
-          for(int j=0;j<matrix[i].length;j++)
-            {
-               
-                g2d.setColor(matrix[i][j].getCouleur());
-                if(matrix[i][j].getPlein() == 1){
-                    g2d.fill(matrix[i][j]);
+        for (carre[] matrix1 : matrix) {
+            for (carre matrix11 : matrix1) {
+                g2d.setColor(matrix11.getCouleur());
+                if (matrix11.getPlein() == 1) {
+                    g2d.fill(matrix11);
                     g2d.setColor(Color.black);
-                    g2d.draw(matrix[i][j]);
-                    g2d.draw(matrix[i][j].getBound());
+                    g2d.draw(matrix11);
+                    g2d.draw(matrix11.getBound());
                 }
-                  g2d.setColor(Color.black);    
+                g2d.setColor(Color.black);    
             }
         }
     }

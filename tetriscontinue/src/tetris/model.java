@@ -10,11 +10,11 @@ public class model {
 
     private Tetrominos nextTetrominos;
     // Tetris has a default size of 10x20 blocks
-    private int NUM_BLOCKS_X = 12;
-    private int NUM_BLOCKS_Y = 22;
+    private final int NUM_BLOCKS_X = 12;
+    private final int NUM_BLOCKS_Y = 22;
     public static int taill_block = 20;
     public Timer timer1;
-    private carre[][] matrix = new carre[NUM_BLOCKS_Y][NUM_BLOCKS_X];
+    private final carre[][] matrix = new carre[NUM_BLOCKS_Y][NUM_BLOCKS_X];
     
     private view myView;
     
@@ -109,7 +109,7 @@ public class model {
         }
     
     public void testFinLigne(){
-        int continuer =1;
+        int continuer ;
         for (int row=matrix.length-2;row>0;row--) {
             continuer =1;            
             for (int col=matrix[0].length-1;col>-1;col--) {

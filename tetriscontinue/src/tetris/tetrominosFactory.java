@@ -99,7 +99,7 @@ public class tetrominosFactory {
     public static Tetrominos seqTetrominos()
     {      
         try{
-            String str = null;
+            String str ;
             if((str =  buffSeq.readLine()) != null){
                     return tetrominosFactory.setTetrominos(Integer.parseInt(str));
                 }

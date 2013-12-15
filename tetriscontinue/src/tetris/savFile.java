@@ -4,13 +4,11 @@
  */
 package tetris;
 import java.io.BufferedReader;
-import java.io.PrintWriter;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import static tetris.tetrominosFactory.buffSeq;
-import static tetris.tetrominosFactory.seqName;
 /**
  *
  * @author Angelgosth
@@ -29,7 +27,7 @@ public class savFile {
     }
     public  savFile(String fileName)
     {
-        this.fileName =fileName;
+        savFile.fileName =fileName;
         try{
             ecrivain =  new  FileWriter(fileName, true);
         }
@@ -46,7 +44,7 @@ public class savFile {
         try{
              buffMov = new BufferedReader(new FileReader(lectName));
         }
-        catch(IOException e)
+        catch(FileNotFoundException e)
         {
             System.out.print(e.getMessage());
             
