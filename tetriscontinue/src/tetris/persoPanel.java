@@ -73,12 +73,12 @@ public class persoPanel extends JPanel{
         for(carre c: tetrominos.vecCarre)
         {
             g2d.setColor(c.getCouleur());
-                        if(c.getPlein() == 1){
+            if(c.getPlein() == 1){
                             g2d.fill(c);
                             g2d.setColor(Color.black);
                             g2d.draw(c);
-                        }
-                          g2d.setColor(Color.black);
+            }
+            g2d.setColor(Color.black);
         }
        
     }

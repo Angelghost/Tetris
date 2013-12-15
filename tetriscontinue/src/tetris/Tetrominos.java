@@ -97,12 +97,12 @@ public class Tetrominos {
      
       this.rotation(1,temp);
       ListIterator<carre> i = vecCarre.listIterator();
-            while (i.hasNext()) {
-               carre c = i.next(); 
-               Point center = new Point((int)(c.getCenter().getX()/model.taill_block)*model.taill_block,(int)(c.getCenter().getY()/model.taill_block)*model.taill_block);  
-               i.set(new carre(center.x,center.y,c.getCouleur(),1,new Point (center.x+model.taill_block/2,center.y+model.taill_block/2)));
-           
-            }
+        while (i.hasNext()) {
+           carre c = i.next(); 
+           Point center = new Point((int)(c.getCenter().getX()/model.taill_block)*model.taill_block,(int)(c.getCenter().getY()/model.taill_block)*model.taill_block);  
+           i.set(new carre(center.x,center.y,c.getCouleur(),1,new Point (center.x+model.taill_block/2,center.y+model.taill_block/2)));
+
+        }
      
       this.mettreAJourY(model.taill_block);
 
@@ -110,7 +110,6 @@ public class Tetrominos {
         this.mettreAJourY(-model.taill_block);  
           for(carre c : vecCarre)
           {
-
             Point center = new Point((int)(c.getCenter().getX()/model.taill_block)*model.taill_block,(int)(c.getCenter().getY()/model.taill_block)*model.taill_block);
             matrix[center.x/model.taill_block][center.y/model.taill_block]= new carre(center.x,center.y,c.getCouleur(),1,new Point (center.x+model.taill_block/2,center.y+model.taill_block/2));
           }
