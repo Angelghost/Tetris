@@ -5,11 +5,10 @@ import java.util.ArrayList;
 import java.util.ListIterator;
 
 public class Tetrominos {
-    public int taill_block =20;
-    private char color;
+    
     private double angle = 0;
     public Point coordonne=new Point(20,20);
-    public ArrayList<carre> vecCarre= new ArrayList<carre>();
+    public ArrayList<carre> vecCarre= new ArrayList<>();
     
      
     public Tetrominos () {
@@ -36,20 +35,19 @@ public class Tetrominos {
     
     Point getCenter()
     {
-        return new Point(coordonne.x+2*taill_block,coordonne.y+2*taill_block);
+        return new Point(coordonne.x+2*model.taill_block,coordonne.y+2*model.taill_block);
     }
   boolean testDeplacement(carre[][] matrix)
   {
-      for (int row=0;row<matrix.length;row++) {
-            for (int col=0;col<matrix[0].length;col++) {
-                for(carre c: vecCarre)
-                {
-                    if(matrix[row][col].getBound().intersects(c.getBound()) && matrix[row][col].getPlein()==1 ) return false;
-                                           
+        for (carre[] matrix1 : matrix) {
+            for (int col = 0; col<matrix[0].length; col++) {
+                for (carre c : vecCarre) {
+                    if (matrix1[col].getBound().intersects(c.getBound()) && matrix1[col].getPlein() == 1) {
+                        return false;                             
+                    }
                 }
-
-           } 
-      }
+            }
+        }
       return true;
   }
 
@@ -64,126 +62,87 @@ public class Tetrominos {
           if(angl<-7*Math.PI/4 || angl >= -Math.PI/4)
         {
             temp=temp-0;
-            System.out.println("angle 0");
         }
         else if(angl<-Math.PI/4 && angl>=- 3*Math.PI/4)
         {
             temp=-temp-Math.PI/2;
-               System.out.println("angle -Pi/2");
-
-        }
+       }
         else if(angl>=-5*Math.PI/4 && angl< -3*Math.PI/4)
         {
             temp=-temp-Math.PI;
-                System.out.println("angle -Pi");
-
         }
         else if(angl>= -7*Math.PI/4 && angl< -5*Math.PI/4)
         {
             temp=-temp-3*Math.PI/2;
-                System.out.println("angle -3Pi/2");
-
-        }
-        else
-        {
-            System.out.println(angl);
-            System.out.println("caca1");
-            System.out.println(angle);
-        }
-      }
+       }
+       }
       else{
         if(angl>7*Math.PI/4 || angl <= Math.PI/4)
         {
             temp=temp-0;
-            System.out.println("angle 0");
         }
         else if(angl>Math.PI/4 && angl<= 3*Math.PI/4)
         {
             temp=-temp+Math.PI/2;
-               System.out.println("angle Pi/2");
-
         }
         else if(angl<=5*Math.PI/4 && angl> 3*Math.PI/4)
         {
             temp=-temp+Math.PI;
-                System.out.println("angle Pi");
-
         }
         else if(angl<=7*Math.PI/4 && angl> 5*Math.PI/4)
         {
             temp=-temp+3*Math.PI/2;
-                System.out.println("angle 3Pi/2");
-
-        }
-        else
-        {
-            System.out.println(angl);
-            System.out.println("caca2");
-             System.out.println(angle);
         }
       }
      
       this.rotation(1,temp);
-      
-      /*for(carre c : vecCarre)
-          {
-                   
-      
-              Point center = new Point((int)(c.getCenter().getX()/taill_block)*taill_block,(int)(c.getCenter().getY()/taill_block)*taill_block);
-              
-             c=new carre(center.y-taill_block/2,center.x-taill_block/2,taill_block,c.getCouleur(),1,new Point (center.x,center.y));
-            } */
       ListIterator<carre> i = vecCarre.listIterator();
             while (i.hasNext()) {
                carre c = i.next(); 
-               Point center = new Point((int)(c.getCenter().getX()/taill_block)*taill_block,(int)(c.getCenter().getY()/taill_block)*taill_block);
-               
-               i.set(new carre(center.x,center.y,taill_block,c.getCouleur(),1,new Point (center.x+taill_block/2,center.y+taill_block/2)));
+               Point center = new Point((int)(c.getCenter().getX()/model.taill_block)*model.taill_block,(int)(c.getCenter().getY()/model.taill_block)*model.taill_block);  
+               i.set(new carre(center.x,center.y,c.getCouleur(),1,new Point (center.x+model.taill_block/2,center.y+model.taill_block/2)));
            
             }
      
-      this.mettreAJourY(taill_block, taill_block);
+      this.mettreAJourY(model.taill_block);
 
       if(!this.testDeplacement(matrix)){
-        this.mettreAJourY(-taill_block, taill_block);  
+        this.mettreAJourY(-model.taill_block);  
           for(carre c : vecCarre)
           {
 
-            Point center = new Point((int)(c.getCenter().getX()/taill_block)*taill_block,(int)(c.getCenter().getY()/taill_block)*taill_block);
-            matrix[center.x/taill_block][center.y/taill_block]= new carre(center.x,center.y,(int)taill_block,c.getCouleur(),1,new Point (center.x+taill_block/2,center.y+taill_block/2));
+            Point center = new Point((int)(c.getCenter().getX()/model.taill_block)*model.taill_block,(int)(c.getCenter().getY()/model.taill_block)*model.taill_block);
+            matrix[center.x/model.taill_block][center.y/model.taill_block]= new carre(center.x,center.y,c.getCouleur(),1,new Point (center.x+model.taill_block/2,center.y+model.taill_block/2));
           }
 
       return true;
       }
       else
       {
-        this.mettreAJourY(-taill_block, taill_block);
+        this.mettreAJourY(-model.taill_block);
       }
       return false;
   }
 
   
-   void mettreAJourX(int x, int taille)
+   void mettreAJourX(int x)
   {
-      int dx=(x-(coordonne.x+2*taill_block));
-      coordonne.x=x-2*taill_block;
+      int dx=(x-(coordonne.x+2*model.taill_block));
+      coordonne.x=x-2*model.taill_block;
       for(carre c: vecCarre){
-          c.changerCoordonne(0, dx, taille);   
+          c.changerCoordonne(0,dx);   
       }
 
   }
-   void mettreAJourY(int y, int taille)
+   void mettreAJourY(int y)
   {
       
       coordonne.y+=y;
       for(carre c: vecCarre){
-          c.changerCoordonne(y, 0, taille);  
+          c.changerCoordonne(y,0);  
       }
   }
 
-  
-  
-  
    void rotation(int sens,double angle)
   {
       

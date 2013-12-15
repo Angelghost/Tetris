@@ -146,14 +146,17 @@ public class option extends javax.swing.JFrame {
 
     private void radioFichierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioFichierActionPerformed
         robotFile.setEnabled(true);
+        savFile.setEnabled(false);
     }//GEN-LAST:event_radioFichierActionPerformed
 
     private void radioClavierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioClavierActionPerformed
         robotFile.setEnabled(false);
+        savFile.setEnabled(true);
     }//GEN-LAST:event_radioClavierActionPerformed
 
     private void radioSourisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioSourisActionPerformed
          robotFile.setEnabled(false);
+         savFile.setEnabled(true);
     }//GEN-LAST:event_radioSourisActionPerformed
 
     /**

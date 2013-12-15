@@ -27,21 +27,19 @@ public class carre extends Rectangle{
     private Color couleur;
     private Point2D center;
     private int plein;
-    private int taill_block;
    public carre()
     {
         
         couleur=null;
         plein=0;
     }
-    public carre(int j,int i,int taille,Color couleur,int plein,Point Center)
+    public carre(int j,int i,Color couleur,int plein,Point Center)
     {
-        super(i,j,taille,taille);
+        super(i,j,model.taill_block,model.taill_block);
         
         center=new Point2D.Double(Center.x,Center.y);
         this.couleur=couleur;
         this.plein=plein;
-        taill_block=taille;
     }
     public carre(carre temp)
     {
@@ -49,7 +47,6 @@ public class carre extends Rectangle{
         center=new Point2D.Double(temp.center.getX(),temp.center.getY());
         couleur=temp.couleur;
         plein=temp.plein;
-        taill_block=temp.taill_block;
     }
     
    public Point2D getCenter()
@@ -58,7 +55,7 @@ public class carre extends Rectangle{
     }
     public Rectangle2D getBound()
     {
-        return new Rectangle2D.Double(1+center.getY()-taill_block/2,1+ center.getX()-taill_block/2, taill_block-2,taill_block-2);
+        return new Rectangle2D.Double(1+center.getY()-model.taill_block/2,1+ center.getX()-model.taill_block/2, model.taill_block-2,model.taill_block-2);
     }
     public Color getCouleur()
     {
@@ -81,7 +78,7 @@ public class carre extends Rectangle{
     }
     
     
-    public void changerCoordonne(int i, int j , int taille)
+    public void changerCoordonne(int i, int j)
     {
         this.translate(j,i);
         this.center= new Point2D.Double(i+center.getX(),j+center.getY());
@@ -90,11 +87,8 @@ public class carre extends Rectangle{
     
     public void changeCarre(carre c)
     {
-        
         this.couleur =c.couleur;
         this.plein =c.plein;
-       
-        
         c.plein = 0;
     }
 }

@@ -73,7 +73,6 @@ public class tetrominosFactory {
     {      
         Random generator = new Random(); 
         int random =generator.nextInt(6)+ 1;
-        System.out.print(random);
         savTetrominos(random);
         return tetrominosFactory.setTetrominos(random);
     }
@@ -85,7 +84,7 @@ public class tetrominosFactory {
         try{
             BufferedWriter output = new BufferedWriter(ecrivain);
             output.write(type+"\r\n");
-             output.flush();
+            output.flush();
 
            
         }
@@ -118,57 +117,56 @@ public class tetrominosFactory {
         Tetrominos temp = new Tetrominos();
         Color tempColor;
         Point coordonne =temp.coordonne;
-        int taill_block=temp.taill_block;
+        int taill_block=model.taill_block;
         switch(type)
         {
             case 1 :
               tempColor=Color.BLUE;
-              temp.vecCarre.add(new carre(coordonne.y+0,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+0*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));         
-              temp.vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+3*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+3*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+0,coordonne.x+1*taill_block,tempColor,1,new Point(coordonne.x+0*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));         
+              temp.vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+1*taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+3*taill_block,coordonne.x+1*taill_block,tempColor,1,new Point(coordonne.x+3*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
 
                 break;
            case 2 :
               tempColor=Color.MAGENTA;
-              temp.vecCarre.add(new carre(coordonne.y+0,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+0*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+0*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+0,coordonne.x+1*taill_block,tempColor,1,new Point(coordonne.x+0*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+1*taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+0*taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
 
                    break;
             case 3 :
               tempColor=Color.GREEN;
-              temp.vecCarre.add(new carre(coordonne.y+0,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+0*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+0*taill_block,taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+0*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+0,coordonne.x+1*taill_block,tempColor,1,new Point(coordonne.x+0*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+0*taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+0*taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
 
 
                 break;
             case 4 :
               tempColor=Color.LIGHT_GRAY;
-              temp.vecCarre.add(new carre(coordonne.y+0*taill_block,coordonne.x+0*taill_block,taill_block,tempColor,1,new Point(coordonne.x+0*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+0*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+0*taill_block,coordonne.x+0*taill_block,tempColor,1,new Point(coordonne.x+0*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+0*taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+1*taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
 
                 break;
               case 5 :
               tempColor=Color.YELLOW;
-              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+2*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+2*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+2*taill_block,taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+2*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+1*taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+2*taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+2*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+2*taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+2*taill_block+taill_block/2)));
 
               break; 
             default:
               tempColor=Color.RED;
-              temp.vecCarre.add(new carre(coordonne.y+0,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+0*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+1*taill_block,taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
-              temp.vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+0,taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
-
+              temp.vecCarre.add(new carre(coordonne.y+0,coordonne.x+1*taill_block,tempColor,1,new Point(coordonne.x+0*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+1*taill_block,coordonne.x+1*taill_block,tempColor,1,new Point(coordonne.x+1*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+1*taill_block,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+1*taill_block+taill_block/2)));
+              temp.vecCarre.add(new carre(coordonne.y+2*taill_block,coordonne.x+0,tempColor,1,new Point(coordonne.x+2*taill_block+taill_block/2,coordonne.y+0*taill_block+taill_block/2)));
                 break;
 
 

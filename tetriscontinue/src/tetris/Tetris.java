@@ -23,7 +23,7 @@ public class Tetris extends javax.swing.JFrame {
     public Tetris() {
         
         this.setContentPane(((panel)viewTetris).monPanel);
-        this.setExtendedState(this.MAXIMIZED_BOTH); 
+        this.setExtendedState(Tetris.MAXIMIZED_BOTH); 
        // this.setUndecorated(true);  
         initComponents();
      
@@ -75,6 +75,7 @@ public class Tetris extends javax.swing.JFrame {
                 if (SwingUtilities.isLeftMouseButton(evt)) {
                         if(timer1 != null) timer1.stop();
                         timer1=new Timer(100,new ActionListener(){
+                        @Override
                         public void actionPerformed(ActionEvent e){
                             savFile.addRotation(-1);
                             modelTetris.rotationTetrominos(-1);
@@ -84,6 +85,7 @@ public class Tetris extends javax.swing.JFrame {
            else if(SwingUtilities.isRightMouseButton(evt)){
                if(timer1 != null) timer1.stop();
                timer1=new Timer(100,new ActionListener(){
+                        @Override
                         public void actionPerformed(ActionEvent e){
                             savFile.addRotation(1);
                             modelTetris.rotationTetrominos(1);
