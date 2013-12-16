@@ -1,8 +1,10 @@
 package tetris;
 
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.ListIterator;
+import java.awt.Color;
 
 public class Tetrominos {
     
@@ -96,6 +98,12 @@ public class Tetrominos {
       }
      
       this.rotation(1,temp);
+      Graphics2D g2d = (Graphics2D)((panel)myView).getPanel().getGraphics();
+      for(carre c: vecCarre)
+        {
+            g2d.setColor(Color.red);
+            g2d.draw(c.getBound());
+        }
       ListIterator<carre> i = vecCarre.listIterator();
         while (i.hasNext()) {
            carre c = i.next(); 
@@ -103,9 +111,17 @@ public class Tetrominos {
            i.set(new carre(center.x,center.y,c.getCouleur(),1,new Point (center.x+model.taill_block/2,center.y+model.taill_block/2)));
 
         }
-     
+     for(carre c: vecCarre)
+        {
+            g2d.setColor(Color.blue);
+            g2d.draw(c.getBound());
+        }
       this.mettreAJourY(model.taill_block);
-
+      for(carre c: vecCarre)
+        {
+            g2d.setColor(Color.green);
+            g2d.draw(c.getBound());
+        }
       if(!this.testDeplacement(matrix)){
         this.mettreAJourY(-model.taill_block);  
           for(carre c : vecCarre)

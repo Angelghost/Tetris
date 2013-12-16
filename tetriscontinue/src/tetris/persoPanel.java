@@ -65,7 +65,7 @@ public class persoPanel extends JPanel{
             }
         }
     }
-
+    g2d.drawOval(tetrominos.getCenter().x,tetrominos.getCenter().y,10, 10);
     g2d.setTransform(transform);
     g2d.rotate(tetrominos.getAngle(),tetrominos.getCenter().x, tetrominos.getCenter().y);
     if(tetrominos != null)
