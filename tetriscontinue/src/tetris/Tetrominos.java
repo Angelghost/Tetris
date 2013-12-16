@@ -63,7 +63,7 @@ public class Tetrominos {
       if(angl<0){
           if(angl<-7*Math.PI/4 || angl >= -Math.PI/4)
         {
-            temp=temp-0;
+            temp=-temp;
         }
         else if(angl<-Math.PI/4 && angl>=- 3*Math.PI/4)
         {
@@ -81,7 +81,7 @@ public class Tetrominos {
       else{
         if(angl>7*Math.PI/4 || angl <= Math.PI/4)
         {
-            temp=temp-0;
+            temp=-temp;
         }
         else if(angl>Math.PI/4 && angl<= 3*Math.PI/4)
         {
@@ -96,6 +96,8 @@ public class Tetrominos {
             temp=-temp+3*Math.PI/2;
         }
       }
+     System.out.println(temp);
+     System.out.print(angle);
      
       this.rotation(1,temp);
       Graphics2D g2d = (Graphics2D)((panel)myView).getPanel().getGraphics();
