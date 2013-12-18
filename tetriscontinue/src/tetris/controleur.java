@@ -7,13 +7,31 @@ package tetris;
 // </editor-fold> 
 public abstract class controleur {
 
-    public model myModel;
+    private model myModel;
     private savFile mySavFile;
-    public int type;
+    private int type;
     public controleur (model myModel,int type) {
         this.myModel=myModel;
         this.type=type;
         
+    }
+    
+    public int getType()
+    {
+        return type;
+    }
+    public void setType(int i)
+    {
+        type=i;
+    }
+    public model getModel()
+    {
+        return myModel;
+    }
+    
+    public void setModel(model m)
+    {
+        myModel=m;
     }
     public void addSavFile(String name)
     {

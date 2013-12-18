@@ -70,7 +70,7 @@ public class Tetris extends javax.swing.JFrame {
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
      
-        if(controleurTetris.type == 2)
+        if(controleurTetris.getType() == 2)
         {
                 if (SwingUtilities.isLeftMouseButton(evt)) {
                         if(timer1 != null) timer1.stop();
@@ -100,7 +100,7 @@ public class Tetris extends javax.swing.JFrame {
     }//GEN-LAST:event_formMousePressed
 
     private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
-        if(controleurTetris.type == 2)
+        if(controleurTetris.getType() == 2)
         {
             controleurTetris.gestionTouche(evt);
         }
@@ -108,7 +108,7 @@ public class Tetris extends javax.swing.JFrame {
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
         
-        if(controleurTetris.type == 2)
+        if(controleurTetris.getType() == 2)
         {
             timer1.stop();
         } 

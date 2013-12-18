@@ -27,6 +27,7 @@ public class carre extends Rectangle{
     private Color couleur;
     private Point2D center;
     private int plein;
+    
    public carre()
     {
         

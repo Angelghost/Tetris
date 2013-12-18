@@ -26,13 +26,13 @@ public class lecteurSeq extends controleur{
                 String tab[]=str.split("/");
                 switch (tab[0]) {
                     case "Rotation":
-                        myModel.rotationTetrominos(Integer.parseInt(tab[1]));
+                        this.getModel().rotationTetrominos(Integer.parseInt(tab[1]));
                         break;
                     case "translation":
-                        myModel.deplacerTetrominosX(Integer.parseInt(tab[1]));
+                       this.getModel().deplacerTetrominosX(Integer.parseInt(tab[1]));
                         break;
                     case "incrementation":
-                        myModel.deplacerTetrominosY(model.taill_block);
+                        this.getModel().deplacerTetrominosY(model.taill_block);
                         break;
                 }
     }

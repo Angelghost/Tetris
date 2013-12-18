@@ -65,12 +65,13 @@ public class persoPanel extends JPanel{
             }
         }
     }
-    g2d.drawOval(tetrominos.getCenter().x,tetrominos.getCenter().y,10, 10);
+    //dessiner le centre de rotation
+    //g2d.drawOval(tetrominos.getCenter().x,tetrominos.getCenter().y,10, 10);
     g2d.setTransform(transform);
     g2d.rotate(tetrominos.getAngle(),tetrominos.getCenter().x, tetrominos.getCenter().y);
     if(tetrominos != null)
     {
-        for(carre c: tetrominos.vecCarre)
+        for(carre c: tetrominos.getVecCarre())
         {
             g2d.setColor(c.getCouleur());
             if(c.getPlein() == 1){

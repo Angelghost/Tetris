@@ -9,8 +9,8 @@ import java.awt.Color;
 public class Tetrominos {
     
     private double angle = 0;
-    public Point coordonne=new Point(20,20);
-    public ArrayList<carre> vecCarre= new ArrayList<>();
+    private Point coordonne=new Point(20,20);
+    private ArrayList<carre> vecCarre= new ArrayList<>();
     
      
     public Tetrominos () {
@@ -25,6 +25,17 @@ public class Tetrominos {
             this.vecCarre.add(new carre(c));
         }
     }
+     
+     public ArrayList<carre> getVecCarre()
+     {
+         
+         return vecCarre;
+     }
+     public Point getCoordonne()
+     {
+         return coordonne;
+     }
+     
     double getAngle()
     {
         return angle;
