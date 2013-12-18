@@ -19,12 +19,15 @@ public class persoPanel extends JPanel{
     
     private carre[][] matrix ;
     private Tetrominos tetrominos; 
-   
+   private Color sameColor=null;
    public persoPanel()
    {
        super();
    }
-   
+   public void setSameColor(Color c)
+   {
+       sameColor =c;
+   }
     public void setMatrix(carre[][] matrix)
     {
         this.matrix=matrix;
@@ -53,15 +56,16 @@ public class persoPanel extends JPanel{
     g2d.setTransform(transform);
     if(matrix != null)
     {
-        for (carre[] matrix1 : matrix) {
-            for (carre matrix11 : matrix1) {
-                g2d.setColor(matrix11.getCouleur());
-                if (matrix11.getPlein() == 1) {
-                    g2d.fill(matrix11);
+        for (int i = 0; i< matrix.length ;i++) {
+            for (int j = 0; j< matrix[i].length ;j++) {
+                if (matrix[i][j].getPlein() == 1 ) {
+                    if(sameColor == null || i == 0 || j == 0 ||j == matrix[i].length -1|| i ==matrix.length -1) g2d.setColor(matrix[i][j].getCouleur());
+                    else g2d.setColor(sameColor);
+                    g2d.fill(matrix[i][j]);
                     g2d.setColor(Color.black);
-                    g2d.draw(matrix11);
+                    g2d.draw(matrix[i][j]);
                 }
-                g2d.setColor(Color.black);    
+                g2d.setColor(Color.white);    
             }
         }
     }
@@ -73,7 +77,8 @@ public class persoPanel extends JPanel{
     {
         for(carre c: tetrominos.getVecCarre())
         {
-            g2d.setColor(c.getCouleur());
+            if(sameColor == null) g2d.setColor(c.getCouleur());
+            else g2d.setColor(sameColor);
             if(c.getPlein() == 1){
                             g2d.fill(c);
                             g2d.setColor(Color.black);

@@ -14,7 +14,6 @@ public class lecteurSeq extends controleur{
     
     public lecteurSeq (model myModel,String name) {
         super(myModel,1);
-        
         mySavFile=new savFile(name);
         savFile.setLecFile(name);
     }

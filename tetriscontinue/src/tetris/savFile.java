@@ -56,7 +56,6 @@ public class savFile {
           try{
             BufferedWriter output = new BufferedWriter(ecrivain);
             output.write("Rotation/" + sens+ "\r\n");
-
              output.flush();
 
            

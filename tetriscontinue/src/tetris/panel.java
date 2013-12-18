@@ -22,6 +22,7 @@ public class panel extends view {
     @Override
     public void afficher(carre[][] matrix,Tetrominos tetrominos) {
         
+        ((persoPanel)monPanel).setSameColor(this.getSameColor());
         ((persoPanel)monPanel).setMatrix(matrix);
         ((persoPanel)monPanel).printTetrominos(tetrominos);
         monPanel.repaint();

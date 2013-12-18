@@ -9,6 +9,7 @@ package tetris;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+import java.awt.Color;
 import static tetris.model.taill_block;
 
 /**
@@ -49,11 +50,14 @@ public class main {
 
     }
     
-    public static void startTetris(int controleur,String nomSavFile, String robotNameFile)
+    public static void startTetris(int controleur,String nomSavFile, String robotNameFile,boolean sameColor, Color c)
     {
         if(controleur == 0) return;
+        
+        
         myOption.setVisible(false);
          final Tetris myTetris = new Tetris();
+         if(sameColor == true)  myTetris.getView().setSameColor(c);
          myTetris.setModel(new model(myTetris.getView()));
          switch(controleur)
          {

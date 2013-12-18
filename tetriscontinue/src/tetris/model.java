@@ -103,7 +103,7 @@ public class model {
                         for (int col=0;col<matrix[0].length;col++) {
                                 matrix[row][col] = new carre(row*taill_block,col*taill_block,Color.WHITE,0,new Point(row*taill_block+taill_block/2,col*taill_block+taill_block/2));
                                 if(col==0 || row ==0 ||col == matrix[0].length-1  || row ==matrix.length -1)
-                                    matrix[row][col] = new carre(row*taill_block,col*taill_block,Color.BLACK,1,new Point(row*taill_block+taill_block/2,col*taill_block+taill_block/2));
+                                    matrix[row][col] = new carre(row*taill_block,col*taill_block,Color.WHITE,1,new Point(row*taill_block+taill_block/2,col*taill_block+taill_block/2));
                         }
                 }
         }
