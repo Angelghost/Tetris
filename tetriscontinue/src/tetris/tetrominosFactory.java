@@ -55,6 +55,10 @@ public class tetrominosFactory {
             
         }
     }
+    
+    /** Setter pour nom fichier seq
+     * @param name nom du fichier
+     */
     public static void setNameFileSeq(String name)
     {
         seqName=name;
@@ -68,7 +72,7 @@ public class tetrominosFactory {
         }
     }
     
-    //créer un tétrominos aléatoirement et le renvoie
+    /** créer un tétrominos aléatoirement et le renvoie */
     public static Tetrominos randTetrominos()
     {      
         Random generator = new Random(); 

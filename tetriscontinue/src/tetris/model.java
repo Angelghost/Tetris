@@ -25,7 +25,6 @@ public class model {
         
         this.myView=myView2;
         
-
     }
   public Tetrominos getNextTetrominos () {
         return nextTetrominos;
@@ -62,7 +61,6 @@ public class model {
         tetrominos=tetrominosFactory.creationTetrominos();
         clearMatrix();
         myView.afficher(matrix,tetrominos);
-        
     }
     
      synchronized void deplacerTetrominosX(int x){//regler les probleme

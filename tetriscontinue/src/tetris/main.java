@@ -46,10 +46,16 @@ public class main {
         myOption=new option();
         myOption.setVisible(true);
         
-       
-
     }
     
+    /**
+     * 
+     * @param controleur
+     * @param nomSavFile
+     * @param robotNameFile
+     * @param sameColor
+     * @param c 
+     */
     public static void startTetris(int controleur,String nomSavFile, String robotNameFile,boolean sameColor, Color c)
     {
         if(controleur == 0) return;
