@@ -15,17 +15,9 @@ public class model {
     public static int taill_block = 20;
     public Timer timer1;
     private final carre[][] matrix = new carre[NUM_BLOCKS_Y][NUM_BLOCKS_X];
-    
-    private view myView;
-    
     public model () {
     }
     
-    public model(view myView2){
-        
-        this.myView=myView2;
-        
-    }
   public Tetrominos getNextTetrominos () {
         return nextTetrominos;
     }
@@ -40,9 +32,9 @@ public class model {
     public Timer getTimer () {
         return timer1;
     }
-    public view getView()
+    public carre[][] getMatrix()
     {
-        return myView;
+        return this.matrix;
     }
     public void setScore (int val) {
         this.score = val;
@@ -60,16 +52,29 @@ public class model {
     {
         tetrominos=tetrominosFactory.creationTetrominos();
         clearMatrix();
-        myView.afficher(matrix,tetrominos);
     }
     
      synchronized void deplacerTetrominosX(int x){//regler les probleme
         if(x > this.NUM_BLOCKS_X*taill_block) return;
         Tetrominos temp = new Tetrominos(tetrominos);
-        temp.mettreAJourX(x);
-        if(temp.testDeplacement(matrix)) tetrominos=temp;
-        myView.afficher(matrix,tetrominos);
- 
+        int diffBut = (int)temp.getCoordonne().getX();
+        
+        int sens  = x - diffBut;
+        while(diffBut !=  x)
+        {
+            if(sens > 0) {
+                diffBut++;
+                temp.mettreAJourX(1);
+            }
+            else {
+                diffBut--;
+                 temp.mettreAJourX(-1);
+            }
+            temp.getCoordonne().x=diffBut;
+            
+            if(temp.testDeplacement(matrix)) tetrominos=temp;
+            else break;
+        }
     }
    synchronized public void deplacerTetrominosY(int y){//regler les probleme
 
@@ -78,14 +83,12 @@ public class model {
         if(temp.testDeplacement(matrix)) tetrominos=temp;
         else
         {
-            if(tetrominos.placer(matrix,myView)){
+            if(tetrominos.placer(matrix)){
             testFinLigne();    
             tetrominos=tetrominosFactory.creationTetrominos();
-            myView.afficher(matrix,temp);
             }
             
         }
-        myView.afficher(matrix,tetrominos);
         
  
     }
@@ -93,7 +96,6 @@ public class model {
         Tetrominos temp = new Tetrominos(tetrominos);
         temp.rotation(nbr,Math.toRadians(10));
         if(temp.testDeplacement(matrix)) tetrominos =temp;
-        myView.afficher(matrix,tetrominos);
     }
     // Clears the matrix
     private void clearMatrix() {

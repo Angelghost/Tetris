@@ -64,7 +64,7 @@ public class Tetrominos {
       return true;
   }
 
-  public boolean placer(carre[][] matrix,view myView)
+  public boolean placer(carre[][] matrix)
   {
       double temp;
       
@@ -111,43 +111,26 @@ public class Tetrominos {
      System.out.print(angle);
      
       this.rotation(1,temp);
-      Graphics2D g2d = (Graphics2D)((panel)myView).getPanel().getGraphics();
-      for(carre c: vecCarre)
-        {
-            g2d.setColor(Color.red);
-            g2d.draw(c.getBound());
-        }
       ListIterator<carre> i = vecCarre.listIterator();
         while (i.hasNext()) {
            carre c = i.next(); 
            Point center = new Point((int)(c.getCenter().getX()/model.taill_block)*model.taill_block,(int)(c.getCenter().getY()/model.taill_block)*model.taill_block);  
            i.set(new carre(center.x,center.y,c.getCouleur(),1,new Point (center.x+model.taill_block/2,center.y+model.taill_block/2)));
-
         }
-     for(carre c: vecCarre)
-        {
-            g2d.setColor(Color.blue);
-            g2d.draw(c.getBound());
-        }
-      this.mettreAJourY(model.taill_block);
-      for(carre c: vecCarre)
-        {
-            g2d.setColor(Color.green);
-            g2d.draw(c.getBound());
-        }
+      this.mettreAJourY(3);
       if(!this.testDeplacement(matrix)){
-        this.mettreAJourY(-model.taill_block);  
+        this.mettreAJourY(-3);  
           for(carre c : vecCarre)
           {
             Point center = new Point((int)(c.getCenter().getX()/model.taill_block)*model.taill_block,(int)(c.getCenter().getY()/model.taill_block)*model.taill_block);
             matrix[center.x/model.taill_block][center.y/model.taill_block]= new carre(center.x,center.y,c.getCouleur(),1,new Point (center.x+model.taill_block/2,center.y+model.taill_block/2));
           }
 
-      return true;
+         return true;
       }
       else
       {
-        this.mettreAJourY(-model.taill_block);
+            this.mettreAJourY(-3);
       }
       return false;
   }
@@ -155,10 +138,9 @@ public class Tetrominos {
   
    void mettreAJourX(int x)
   {
-      int dx=(x-(coordonne.x+2*model.taill_block));
-      coordonne.x=x-2*model.taill_block;
+      
       for(carre c: vecCarre){
-          c.changerCoordonne(0,dx);   
+          c.changerCoordonne(0,x);   
       }
 
   }

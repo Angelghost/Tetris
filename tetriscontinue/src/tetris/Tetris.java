@@ -19,7 +19,10 @@ public class Tetris extends javax.swing.JFrame {
     private view viewTetris = new panel();
     private model modelTetris ;
     private controleur controleurTetris ;
-    private Timer timer1;
+    private Timer timerSouris;
+    private Timer timerAffichage;
+    
+    
     public Tetris() {
         
         this.setContentPane(((panel)viewTetris).monPanel);
@@ -27,7 +30,14 @@ public class Tetris extends javax.swing.JFrame {
        // this.setUndecorated(true);  
         initComponents();
      
-    
+         timerAffichage=new Timer(50,new ActionListener(){
+                        @Override
+                        public void actionPerformed(ActionEvent e){
+                            viewTetris.afficher(modelTetris.getMatrix(), modelTetris.getTetrominos());
+                        } 
+                    });
+         
+         timerAffichage.start();
     }
 
     /**
@@ -67,14 +77,17 @@ public class Tetris extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * Gestion des boutons de la souris  
+ * @param evt 
+ */
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
      
         if(controleurTetris.getType() == 2)
         {
                 if (SwingUtilities.isLeftMouseButton(evt)) {
-                        if(timer1 != null) timer1.stop();
-                        timer1=new Timer(100,new ActionListener(){
+                        if(timerSouris != null) timerSouris.stop();
+                        timerSouris=new Timer(100,new ActionListener(){
                         @Override
                         public void actionPerformed(ActionEvent e){
                             savFile.addRotation(-1);
@@ -83,8 +96,8 @@ public class Tetris extends javax.swing.JFrame {
                     });
                 }
            else if(SwingUtilities.isRightMouseButton(evt)){
-               if(timer1 != null) timer1.stop();
-               timer1=new Timer(100,new ActionListener(){
+               if(timerSouris != null) timerSouris.stop();
+               timerSouris=new Timer(100,new ActionListener(){
                         @Override
                         public void actionPerformed(ActionEvent e){
                             savFile.addRotation(1);
@@ -94,11 +107,14 @@ public class Tetris extends javax.swing.JFrame {
 
            }
 
-           timer1.start();
+           timerSouris.start();
         }
         
     }//GEN-LAST:event_formMousePressed
-
+    /**
+     *  Gestion déplacement de la souris
+     * @param evt 
+     */
     private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
         if(controleurTetris.getType() == 2)
         {
@@ -110,7 +126,7 @@ public class Tetris extends javax.swing.JFrame {
         
         if(controleurTetris.getType() == 2)
         {
-            timer1.stop();
+            timerSouris.stop();
         } 
     }//GEN-LAST:event_formMouseReleased
 
@@ -123,13 +139,19 @@ public class Tetris extends javax.swing.JFrame {
     {
         return this.controleurTetris;
     }
-    
+    /**
+     * getter du model
+     * @return le model
+     */
     public model getModel()
     {
         return this.modelTetris;
     }
     
-    
+    /**
+     * Setter de la view 
+     * @param myView 
+     */
     public void setView(view myView)
     {
         this.viewTetris = myView;

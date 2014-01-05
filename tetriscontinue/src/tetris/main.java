@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import java.awt.Color;
-import static tetris.model.taill_block;
 
 /**
  *
@@ -45,11 +44,11 @@ public class main {
         /* Create and display the form */
         myOption=new option();
         myOption.setVisible(true);
-        
+        System.out.print(System.currentTimeMillis());
     }
     
     /**
-     * 
+     * Fonction qui lance le Tétris
      * @param controleur
      * @param nomSavFile
      * @param robotNameFile
@@ -64,7 +63,7 @@ public class main {
         myOption.setVisible(false);
          final Tetris myTetris = new Tetris();
          if(sameColor == true)  myTetris.getView().setSameColor(c);
-         myTetris.setModel(new model(myTetris.getView()));
+         myTetris.setModel(new model());
          switch(controleur)
          {
              case 1: {
@@ -85,11 +84,11 @@ public class main {
                  tetrominosFactory.setModCreation(1);
                  tetrominosFactory.setNameFileSav(nomSavFile+".seq");
                  myTetris.setControleur(new souris(myTetris.getModel()));  
-                 myTetris.getModel().timer1=new Timer(500,new ActionListener(){
+                 myTetris.getModel().timer1=new Timer(10,new ActionListener(){
                      @Override
                      public void actionPerformed(ActionEvent e){
-                                 myTetris.getModel().deplacerTetrominosY(taill_block);
-                                savFile.addDesc(0, taill_block);
+                                 myTetris.getModel().deplacerTetrominosY(1);
+                                savFile.addDesc(0, 1);
                              }
                          });
                         myTetris.getModel().timer1.start();

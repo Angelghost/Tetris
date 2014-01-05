@@ -88,7 +88,7 @@ public class option extends javax.swing.JFrame {
 
         savFile.setText("Fichier de sauvegarde");
 
-        textScale.setText("2");
+        textScale.setText("1");
 
         positionX.setText("0");
 

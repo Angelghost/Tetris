@@ -10,13 +10,16 @@ package tetris;
  */
 public class lecteurSeq extends controleur{
     
-    private savFile mySavFile;
     
     public lecteurSeq (model myModel,String name) {
         super(myModel,1);
-        mySavFile=new savFile(name);
         savFile.setLecFile(name);
     }
+    
+    /**
+     * Gestion des entrées du fichier sequence 
+     * @param o 
+     */
     @Override
     public void gestionTouche(Object o){
   

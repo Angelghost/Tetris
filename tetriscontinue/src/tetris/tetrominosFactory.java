@@ -80,17 +80,18 @@ public class tetrominosFactory {
         savTetrominos(random);
         return tetrominosFactory.setTetrominos(random);
     }
-    
-    //sauvegarde le type de tétrominos passé en paramètre
-    //permet de sauvegarder la sequence de tétrominos 
+    /**
+     *  sauvegarde le type de tétrominos passé en paramètre
+     *  dans le fichier pour pouvoir le relire 
+     * @param type 
+     */
+
     public static void savTetrominos(int type)
     {
         try{
             BufferedWriter output = new BufferedWriter(ecrivain);
             output.write(type+"\r\n");
             output.flush();
-
-           
         }
         catch(IOException e)
         {
@@ -98,8 +99,10 @@ public class tetrominosFactory {
             
         } 
     }
-    
-    //renvoie le prochain tétrominos de la seq
+    /**
+     * renvoie le prochain tétrominos de la seq
+     * @return Tétrominos
+     */
     public static Tetrominos seqTetrominos()
     {      
         try{
@@ -115,7 +118,11 @@ public class tetrominosFactory {
         } 
         return null;
     }
-    //créer un tétrominos par rapport au type envoyée et le renvoie
+    /**
+     * créer un tétrominos par rapport au type envoyée et le renvoie
+     * @param type
+     * @return le tétrominos
+     */
     public static Tetrominos setTetrominos(int type)
     {
         Tetrominos temp = new Tetrominos();

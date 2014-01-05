@@ -55,10 +55,8 @@ public class savFile {
     {
           try{
             BufferedWriter output = new BufferedWriter(ecrivain);
-            output.write("Rotation/" + sens+ "\r\n");
+            output.write("Rotation/" + sens+ "/"+System.currentTimeMillis()+"\r\n");
              output.flush();
-
-           
         }
         catch(IOException e)
         {
@@ -72,7 +70,7 @@ public class savFile {
     {
             try{
             BufferedWriter output = new BufferedWriter(ecrivain);
-            output.write("translation/" + x+ "/" +y +"\r\n");
+            output.write("translation/" + x+ "/" +y + "/"+System.currentTimeMillis()+"\r\n");
 
              output.flush();
 
@@ -88,7 +86,7 @@ public class savFile {
     {
             try{
             BufferedWriter output = new BufferedWriter(ecrivain);
-            output.write("incrementation/" + x+ "/" +y +"\r\n");
+            output.write("incrementation/" + x+ "/" +y + "/"+System.currentTimeMillis()+"\r\n");
 
              output.flush();
 

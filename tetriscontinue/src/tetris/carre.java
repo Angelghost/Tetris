@@ -1,26 +1,11 @@
 package tetris;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Akmale
- */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import java.awt.*;
 import java.awt.geom.*;
 
 /**
- *
- * @author Akmale
+ * Class carre qui est hériditaire de la classe Rectangle de la bibliothéque awt.
+ * @author Angelgosth
  */
 public class carre extends Rectangle{
     
