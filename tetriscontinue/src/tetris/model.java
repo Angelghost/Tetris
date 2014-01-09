@@ -8,29 +8,26 @@ public class model {
     private int score = 0;
     private Tetrominos tetrominos;
 
-    private Tetrominos nextTetrominos;
     // Tetris has a default size of 10x20 blocks
     private final int NUM_BLOCKS_X = 12;
     private final int NUM_BLOCKS_Y = 22;
     public static int taill_block = 20;
-    public Timer timer1;
+    
+    private Timer timerAction;
     private final carre[][] matrix = new carre[NUM_BLOCKS_Y][NUM_BLOCKS_X];
     public model () {
     }
     
-  public Tetrominos getNextTetrominos () {
-        return nextTetrominos;
-    }
-
-    public void setNextTetrominos (Tetrominos val) {
-        this.nextTetrominos = val;
-    }
 
     public int getScore () {
         return score;
     }
     public Timer getTimer () {
-        return timer1;
+        return timerAction;
+    }
+    public void setTimer(Timer timerA)
+    {
+        timerAction=timerA;
     }
     public carre[][] getMatrix()
     {

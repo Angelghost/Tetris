@@ -19,6 +19,7 @@ public class savFile {
     public static FileWriter ecrivain;
     public static String lectName;
     public static BufferedReader buffMov;
+    public static long firstTime;
     
     
     public savFile()
@@ -27,6 +28,7 @@ public class savFile {
     }
     public  savFile(String fileName)
     {
+        firstTime=System.currentTimeMillis();
         savFile.fileName =fileName;
         try{
             ecrivain =  new  FileWriter(fileName, true);
@@ -55,7 +57,7 @@ public class savFile {
     {
           try{
             BufferedWriter output = new BufferedWriter(ecrivain);
-            output.write("Rotation/" + sens+ "/"+System.currentTimeMillis()+"\r\n");
+            output.write((System.currentTimeMillis()-firstTime)+"/Rotation/" + sens+"\r\n");
              output.flush();
         }
         catch(IOException e)
@@ -70,10 +72,8 @@ public class savFile {
     {
             try{
             BufferedWriter output = new BufferedWriter(ecrivain);
-            output.write("translation/" + x+ "/" +y + "/"+System.currentTimeMillis()+"\r\n");
-
+            output.write((System.currentTimeMillis()-firstTime)+"/translation/" + x+ "/" +y + "\r\n");
              output.flush();
-
            
         }
         catch(IOException e)
@@ -86,7 +86,7 @@ public class savFile {
     {
             try{
             BufferedWriter output = new BufferedWriter(ecrivain);
-            output.write("incrementation/" + x+ "/" +y + "/"+System.currentTimeMillis()+"\r\n");
+            output.write((System.currentTimeMillis()-firstTime)+"/incrementation/" + x+ "/" +y +"\r\n");
 
              output.flush();
 
@@ -98,7 +98,7 @@ public class savFile {
             
         }
     }
-    public static String getNextMove() // renvoie si rotation ou deplacement voir si besoin de creation de classe pour avoir toute les donnée
+    public static String getNextMove()
     {
         try{
             String str = null;

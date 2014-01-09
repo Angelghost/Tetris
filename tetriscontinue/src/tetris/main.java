@@ -44,7 +44,6 @@ public class main {
         /* Create and display the form */
         myOption=new option();
         myOption.setVisible(true);
-        System.out.print(System.currentTimeMillis());
     }
     
     /**
@@ -70,13 +69,13 @@ public class main {
                  tetrominosFactory.setModCreation(2);
                  tetrominosFactory.setNameFileSeq(robotNameFile+".seq");
                     myTetris.setControleur(new lecteurSeq(myTetris.getModel(),robotNameFile+".SAV"));
-                      myTetris.getModel().timer1=new Timer(10,new ActionListener(){
+                      myTetris.getModel().setTimer(new Timer(10,new ActionListener(){
                         @Override
                         public void actionPerformed(ActionEvent e){
                                    myTetris.getControleur().gestionTouche(null);
                                 }
-                            });
-                        myTetris.getModel().timer1.start();
+                            }));
+                        myTetris.getModel().getTimer().start();
                            
                     }
                  break;
@@ -84,14 +83,14 @@ public class main {
                  tetrominosFactory.setModCreation(1);
                  tetrominosFactory.setNameFileSav(nomSavFile+".seq");
                  myTetris.setControleur(new souris(myTetris.getModel()));  
-                 myTetris.getModel().timer1=new Timer(10,new ActionListener(){
+                 myTetris.getModel().setTimer(new Timer(100,new ActionListener(){
                      @Override
                      public void actionPerformed(ActionEvent e){
                                  myTetris.getModel().deplacerTetrominosY(1);
                                 savFile.addDesc(0, 1);
                              }
-                         });
-                        myTetris.getModel().timer1.start();
+                         }));
+                        myTetris.getModel().getTimer().start();
              }
                  break;
              

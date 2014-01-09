@@ -40,7 +40,10 @@ public class persoPanel extends JPanel{
         
     }
     
-    
+    /**
+     * Fonction permettant l'affichage de l'écran
+     * @param g 
+     */
     @Override
     public void paintComponent(Graphics g) {
     Graphics2D g2d = (Graphics2D)g;
@@ -54,6 +57,7 @@ public class persoPanel extends JPanel{
     transform.translate(option.position.x, option.position.y);
     transform.concatenate(g2d.getTransform());
     g2d.setTransform(transform);
+    //on dessine le plateau du tétris
     if(matrix != null)
     {
         for (int i = 0; i< matrix.length ;i++) {

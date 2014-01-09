@@ -201,7 +201,6 @@ public class option extends javax.swing.JFrame {
                 }
               }
             }
-        System.out.print(textScale.getText());
        option.scale=Double.parseDouble(textScale.getText());
        option.position=new Point(Integer.parseInt(positionX.getText()),Integer.parseInt(positionY.getText()));    
        Color c =jColorChooser1.getColor();

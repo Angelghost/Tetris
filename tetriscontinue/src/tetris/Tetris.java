@@ -20,16 +20,16 @@ public class Tetris extends javax.swing.JFrame {
     private model modelTetris ;
     private controleur controleurTetris ;
     private Timer timerSouris;
-    private Timer timerAffichage;
+    private final Timer timerAffichage;
     
     
     public Tetris() {
         
         this.setContentPane(((panel)viewTetris).monPanel);
-        this.setExtendedState(Tetris.MAXIMIZED_BOTH); 
-       // this.setUndecorated(true);  
+        this.setExtendedState(Tetris.MAXIMIZED_BOTH);   
         initComponents();
-     
+        
+        
          timerAffichage=new Timer(50,new ActionListener(){
                         @Override
                         public void actionPerformed(ActionEvent e){
@@ -83,6 +83,11 @@ public class Tetris extends javax.swing.JFrame {
  */
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
      
+        /**
+         * On test si le controleur est bien du type de la souris (2)
+         * et on crée un timer pour continuer la rotation tant que le
+         * bouton de la souris n'est pas relaché.
+        */
         if(controleurTetris.getType() == 2)
         {
                 if (SwingUtilities.isLeftMouseButton(evt)) {
@@ -129,12 +134,18 @@ public class Tetris extends javax.swing.JFrame {
             timerSouris.stop();
         } 
     }//GEN-LAST:event_formMouseReleased
-
+    /**
+     * Setter de la view
+     * @return 
+     */
     public view getView()
     {
         return this.viewTetris;
     }
-    
+    /**
+     * Getter du controleur
+     * @return 
+     */
     public controleur getControleur()
     {
         return this.controleurTetris;
@@ -156,12 +167,18 @@ public class Tetris extends javax.swing.JFrame {
     {
         this.viewTetris = myView;
     }
-    
+    /**
+     * Setter du controleur
+     * @param myCon 
+     */
     public void setControleur(controleur myCon)
     {
         this.controleurTetris= myCon;
     }
-    
+    /**
+     * Setter du model
+     * @param mod 
+     */
     public void setModel(model mod)
     {
         this.modelTetris =  mod;

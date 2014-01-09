@@ -28,11 +28,18 @@ public class tetrominosFactory {
     public static BufferedReader buffSeq;
     private static int modeCreation=1;
     
+    /**
+     * setter du mode de creation
+     * @param mode 
+     */
     public static void setModCreation(int mode)
     {
         modeCreation=mode;
     }
-   
+   /**
+    * Créer un tétrominos par rapport à son mode de création.
+    * @return 
+    */
     public static Tetrominos creationTetrominos()
     {
         switch(modeCreation)
@@ -43,6 +50,10 @@ public class tetrominosFactory {
         
         return null;
     }
+    /**
+     * Setter pour le nom du fichier de sauvegarde du fichier de séquence
+     * @param name 
+     */
     public static void setNameFileSav(String name)
     {
         fileName=name;
@@ -72,7 +83,10 @@ public class tetrominosFactory {
         }
     }
     
-    /** créer un tétrominos aléatoirement et le renvoie */
+    /** 
+     *  Crée un tétrominos de facon aléatoire.
+     * @return 
+     */
     public static Tetrominos randTetrominos()
     {      
         Random generator = new Random(); 

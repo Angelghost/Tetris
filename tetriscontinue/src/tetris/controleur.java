@@ -5,6 +5,10 @@ package tetris;
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.3CF0A97E-E3BB-5EEB-4518-C5D5D4F73313]
 // </editor-fold> 
+/**
+ * Class abstract conteur qui permet d'implémenté les controleurs du tétris
+ * @author Akmale
+ */
 public abstract class controleur {
 
     private model myModel;
@@ -15,15 +19,26 @@ public abstract class controleur {
         this.type=type;
         
     }
-    
+    /**
+     * Getter type
+     * @return 
+     */
     public int getType()
     {
         return type;
     }
+    /**
+     * Setter type
+     * @param i 
+     */
     public void setType(int i)
     {
         type=i;
     }
+    /**
+     * Getter Model
+     * @return 
+     */
     public model getModel()
     {
         return myModel;
