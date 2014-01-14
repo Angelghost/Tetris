@@ -51,7 +51,7 @@ public class tetrominosFactory {
         return null;
     }
     /**
-     * Setter pour le nom du fichier de sauvegarde du fichier de séquence
+     * Setter pour le nom du fichier de sauvegarde du fichier de séquence.
      * @param name 
      */
     public static void setNameFileSav(String name)
@@ -67,7 +67,7 @@ public class tetrominosFactory {
         }
     }
     
-    /** Setter pour nom fichier seq
+    /** Setter pour nom fichier de lecture pour rejouer une partie.
      * @param name nom du fichier
      */
     public static void setNameFileSeq(String name)

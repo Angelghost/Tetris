@@ -106,7 +106,7 @@ public class carre extends Rectangle{
         
     }
     /**
-     * Permet de mettre le carre à vide.
+     * Permet de changer de carré et de mettre l'autre à vide.
      * @param c 
      */
     public void changeCarre(carre c)

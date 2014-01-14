@@ -50,8 +50,11 @@ public class model {
         tetrominos=tetrominosFactory.creationTetrominos();
         clearMatrix();
     }
-    
-     synchronized void deplacerTetrominosX(int x){//regler les probleme
+    /**
+     * 
+     * @param x 
+     */
+     synchronized void deplacerTetrominosX(int x){
         if(x > this.NUM_BLOCKS_X*taill_block) return;
         Tetrominos temp = new Tetrominos(tetrominos);
         int diffBut = (int)temp.getCoordonne().getX();
@@ -73,7 +76,11 @@ public class model {
             else break;
         }
     }
-   synchronized public void deplacerTetrominosY(int y){//regler les probleme
+     /**
+      * 
+      * @param y 
+      */
+   synchronized public void deplacerTetrominosY(int y){
 
         Tetrominos temp = new Tetrominos(tetrominos);
         temp.mettreAJourY(y);
