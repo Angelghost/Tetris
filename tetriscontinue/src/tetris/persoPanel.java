@@ -24,16 +24,28 @@ public class persoPanel extends JPanel{
    {
        super();
    }
+   /**
+    * Setter pour la variable sameColor
+    * @param c 
+    */
    public void setSameColor(Color c)
    {
        sameColor =c;
    }
+   /**
+    * Setter pour la matrix d'affichage
+    * @param matrix 
+    */
     public void setMatrix(carre[][] matrix)
     {
         this.matrix=matrix;
         
     }
     
+    /**
+     * Setter pour le tétrominos d'affichage
+     * @param tetrominos 
+     */
     public void printTetrominos(Tetrominos tetrominos)
     {
         this.tetrominos=tetrominos;
