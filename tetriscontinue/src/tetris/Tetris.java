@@ -4,13 +4,12 @@ package tetris;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import java.awt.event.*;
+import javax.swing.*;
 /**
  *
  * @author Angelgosth
  */
-import java.awt.event.*;
-import javax.swing.*;
 public class Tetris extends javax.swing.JFrame {
 
     /**

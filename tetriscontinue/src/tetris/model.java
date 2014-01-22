@@ -7,15 +7,18 @@ public class model {
     
     private int score = 0;
     private Tetrominos tetrominos;
-
+   
     // Tetris has a default size of 10x20 blocks
     private final int NUM_BLOCKS_X = 12;
     private final int NUM_BLOCKS_Y = 22;
+    private final carre[][] matrix ;
     public static int taill_block = 20;
     
     private Timer timerAction;
-    private final carre[][] matrix = new carre[NUM_BLOCKS_Y][NUM_BLOCKS_X];
+   
+    
     public model () {
+        matrix = new carre[NUM_BLOCKS_Y][NUM_BLOCKS_X];
     }
     
 

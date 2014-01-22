@@ -7,19 +7,20 @@ import java.util.ListIterator;
 public class Tetrominos {
     
     private double angle = 0;
-    private Point coordonne=new Point(20,20);
-    private final ArrayList<carre>  vecCarre= new ArrayList<>();
+    private Point coordonne;
+    private final ArrayList<carre>  vecCarre;
     
      
     public Tetrominos () {
-
-        
+        vecCarre= new ArrayList();
+        coordonne=new Point(20,20);
     }
     /**
      * Fonction de recopie du tétrominos
      * @param temp 
      */
      public Tetrominos (Tetrominos temp) {
+        vecCarre= new ArrayList();
         angle=temp.angle;
         coordonne=new Point(temp.coordonne);
         for(carre c :temp.vecCarre)

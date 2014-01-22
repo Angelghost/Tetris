@@ -38,7 +38,7 @@ public class option extends javax.swing.JFrame {
         radioSouris = new javax.swing.JRadioButton();
         radioClavier = new javax.swing.JRadioButton();
         radioFichier = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        start = new javax.swing.JButton();
         robotFile = new javax.swing.JTextField();
         savFile = new javax.swing.JTextField();
         textScale = new javax.swing.JTextField();
@@ -76,10 +76,10 @@ public class option extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Play");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        start.setText("Play");
+        start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                startActionPerformed(evt);
             }
         });
 
@@ -125,7 +125,7 @@ public class option extends javax.swing.JFrame {
                                 .addGap(68, 68, 68)
                                 .addComponent(savFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(41, 41, 41)
-                                .addComponent(jButton1))
+                                .addComponent(start))
                             .addComponent(radioClavier)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(radioFichier)
@@ -153,7 +153,7 @@ public class option extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(radioSouris)
                             .addComponent(savFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
+                            .addComponent(start))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(radioClavier)
                         .addGap(18, 18, 18)
@@ -184,7 +184,7 @@ public class option extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
        int controleur=0;
         Enumeration elements = controleurGroup.getElements();
             while (elements.hasMoreElements()) {
@@ -205,7 +205,7 @@ public class option extends javax.swing.JFrame {
        option.position=new Point(Integer.parseInt(positionX.getText()),Integer.parseInt(positionY.getText()));    
        Color c =jColorChooser1.getColor();
        main.startTetris(controleur,savFile.getText(),robotFile.getText(),colorCheck.isSelected(),c);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_startActionPerformed
 
     private void radioFichierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioFichierActionPerformed
         robotFile.setEnabled(true);
@@ -235,7 +235,6 @@ public class option extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox colorCheck;
     private javax.swing.ButtonGroup controleurGroup;
-    private javax.swing.JButton jButton1;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -247,6 +246,7 @@ public class option extends javax.swing.JFrame {
     private javax.swing.JRadioButton radioSouris;
     private javax.swing.JTextField robotFile;
     private javax.swing.JTextField savFile;
+    private javax.swing.JButton start;
     private javax.swing.JTextField textScale;
     // End of variables declaration//GEN-END:variables
 }
