@@ -1,6 +1,5 @@
 package tetris;
 
-import javax.swing.JPanel;
 
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -8,7 +7,7 @@ import javax.swing.JPanel;
 // </editor-fold> 
 public class panel extends view {
 
-    public JPanel monPanel = new persoPanel();
+    public persoPanel monPanel = new persoPanel();
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.5447C2E0-4810-DD72-E024-084459812711]

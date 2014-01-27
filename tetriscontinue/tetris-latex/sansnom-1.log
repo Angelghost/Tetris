@@ -1,15 +1,18 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.1.10)  21 JAN 2014 17:29
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.6.23)  26 JAN 2014 17:54
 entering extended mode
-**D:/cours-papierimportant/tetris/sansnom-1.tex
-(D:/cours-papierimportant/tetris/sansnom-1.tex
+**C:/Users/Angelgosth/Documents/NetBeansProjects/TetrisContinu/tetriscontinue/t
+etris-latex/sansnom-1.tex
+
+(C:/Users/Angelgosth/Documents/NetBeansProjects/TetrisContinu/tetriscontinue/te
+tris-latex/sansnom-1.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
 croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
-lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
+lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
 ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
  lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
-german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
@@ -313,7 +316,9 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \@indexfile=\write3
 
 Writing index file sansnom-1.idx
-(D:\cours-papierimportant\tetris\sansnom-1.aux)
+
+(C:\Users\Angelgosth\Documents\NetBeansProjects\TetrisContinu\tetriscontinue\te
+tris-latex\sansnom-1.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
@@ -358,15 +363,21 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(D:\cours-papierimportant\tetris\sansnom-1.toc
+(C:\Users\Angelgosth\Documents\NetBeansProjects\TetrisContinu\tetriscontinue\te
+tris-latex\sansnom-1.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 4.
 )
 \tf@toc=\write4
- [2] [3]
-<diagram1.png, id=16, 348.55219pt x 212.29312pt>
+ [2]
+Overfull \hbox (0.83388pt too wide) in paragraph at lines 37--38
+[]\OT1/cmr/m/n/10 Le choix du lan-gages, java, et de la li-brai-ries gra-phique
+s, swing, etant suggerer
+ []
+
+[3] <diagram1.png, id=16, 348.55219pt x 212.29312pt>
 File: diagram1.png Graphic file (type png)
  <use diagram1.png>
 Package pdftex.def Info: diagram1.png used on input line 44.
@@ -379,54 +390,92 @@ Overfull \hbox (3.55132pt too wide) in paragraph at lines 44--45
 <diagram2.png, id=17, 374.90062pt x 272.51813pt>
 File: diagram2.png Graphic file (type png)
  <use diagram2.png>
-Package pdftex.def Info: diagram2.png used on input line 51.
+Package pdftex.def Info: diagram2.png used on input line 52.
 (pdftex.def)             Requested size: 374.8997pt x 272.51746pt.
 
-Overfull \hbox (29.8997pt too wide) in paragraph at lines 51--52
+Overfull \hbox (29.8997pt too wide) in paragraph at lines 52--53
 [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4 <D:/cours-papierimportant/tetris/diagram1.png>] [5 <D:/cours-papierimportant
-/tetris/diagram2.png>] <diagramMain.png, id=26, 360.59718pt x 402.00188pt>
-File: diagramMain.png Graphic file (type png)
+[4 <C:/Users/Angelgosth/Documents/NetBeansProjects/TetrisContinu/tetriscontinue
+/tetris-latex/diagram1.png>]
 
-<use diagramMain.png>
-Package pdftex.def Info: diagramMain.png used on input line 64.
-(pdftex.def)             Requested size: 360.5963pt x 402.00089pt.
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 61.
 
-Overfull \hbox (15.5963pt too wide) in paragraph at lines 64--65
+<diagram3.png, id=23, 1028.34187pt x 578.16pt>
+File: diagram3.png Graphic file (type png)
+ <use diagram3.png>
+Package pdftex.def Info: diagram3.png used on input line 63.
+(pdftex.def)             Requested size: 1028.33937pt x 578.15858pt.
+
+Overfull \hbox (683.33937pt too wide) in paragraph at lines 63--64
 [][] 
  []
 
-[6 <D:/cours-papierimportant/tetris/diagramMain.png>] [7] [8]
-Overfull \hbox (18.28331pt too wide) in paragraph at lines 125--126
+
+LaTeX Warning: Float too large for page by 48.04747pt on input line 64.
+
+[5 <C:/Users/Angelgosth/Documents/NetBeansProjects/TetrisContinu/tetriscontinue
+/tetris-latex/diagram2.png>] [6 <C:/Users/Angelgosth/Documents/NetBeansProjects
+/TetrisContinu/tetriscontinue/tetris-latex/diagram3.png>]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 69.
+
+<diagram4.png, id=30, 449.42906pt x 225.84375pt>
+File: diagram4.png Graphic file (type png)
+ <use diagram4.png>
+Package pdftex.def Info: diagram4.png used on input line 71.
+(pdftex.def)             Requested size: 426.79134pt x 214.47797pt.
+
+Overfull \hbox (81.79134pt too wide) in paragraph at lines 71--72
+[][] 
+ []
+
+[7 <C:/Users/Angelgosth/Documents/NetBeansProjects/TetrisContinu/tetriscontinue
+/tetris-latex/diagram4.png>]
+<diagramMain.png, id=35, 360.59718pt x 402.00188pt>
+File: diagramMain.png Graphic file (type png)
+ <use diagramMain.png>
+Package pdftex.def Info: diagramMain.png used on input line 80.
+(pdftex.def)             Requested size: 360.5963pt x 402.00089pt.
+
+Overfull \hbox (15.5963pt too wide) in paragraph at lines 80--81
+[][] 
+ []
+
+[8 <C:/Users/Angelgosth/Documents/NetBeansProjects/TetrisContinu/tetriscontinue
+/tetris-latex/diagramMain.png>] [9] [10]
+Overfull \hbox (18.28331pt too wide) in paragraph at lines 140--141
 []\OT1/cmr/m/n/10 Cette classe implemente la classe \OT1/cmr/m/it/10 contro-le
 ur\OT1/cmr/m/n/10 , elle per-met de gerer les deplacements
  []
 
-[9] [10] [11] (D:\cours-papierimportant\tetris\sansnom-1.aux) ) 
+[11] [12] [13]
+(C:\Users\Angelgosth\Documents\NetBeansProjects\TetrisContinu\tetriscontinue\te
+tris-latex\sansnom-1.aux) ) 
 Here is how much of TeX's memory you used:
- 2042 strings out of 493921
- 26330 string characters out of 3147282
- 85519 words of memory out of 3000000
- 5335 multiletter control sequences out of 15000+200000
+ 2052 strings out of 493921
+ 27001 string characters out of 3147267
+ 86519 words of memory out of 3000000
+ 5343 multiletter control sequences out of 15000+200000
  8542 words of font info for 30 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,6n,24p,829b,266s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10
-.pfb>
-Output written on sansnom-1.pdf (11 pages, 244542 bytes).
+ 27i,6n,24p,886b,217s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on sansnom-1.pdf (13 pages, 283695 bytes).
 PDF statistics:
- 69 PDF objects out of 1000 (max. 8388607)
+ 78 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

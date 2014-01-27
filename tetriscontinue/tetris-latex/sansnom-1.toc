@@ -3,16 +3,16 @@
 \contentsline {section}{\numberline {2}UML et conception}{3}
 \contentsline {subsection}{\numberline {2.1}Pr\IeC {\'e}sentation du projet}{3}
 \contentsline {subsection}{\numberline {2.2}Conception}{3}
-\contentsline {section}{\numberline {3}La classe main et option}{5}
-\contentsline {section}{\numberline {4}La classe T\IeC {\'e}tris}{7}
-\contentsline {subsection}{\numberline {4.1}La classe Model}{7}
-\contentsline {subsubsection}{\numberline {4.1.1}La classe T\IeC {\'e}trominos}{8}
-\contentsline {paragraph}{La classe tetrominosFactory}{8}
-\contentsline {subsubsection}{\numberline {4.1.2}La classe carre}{9}
-\contentsline {subsection}{\numberline {4.2}La classe Controleur}{9}
-\contentsline {subsubsection}{\numberline {4.2.1}La classe souris}{9}
-\contentsline {subsubsection}{\numberline {4.2.2}La classe lecteurSeq}{10}
-\contentsline {subsection}{\numberline {4.3}La classe View}{10}
-\contentsline {subsubsection}{\numberline {4.3.1}La classe panel}{10}
-\contentsline {subsubsection}{\numberline {4.3.2}La classe persoPanel}{10}
-\contentsline {section}{\numberline {5}Conclusion}{10}
+\contentsline {section}{\numberline {3}La classe main et option}{8}
+\contentsline {section}{\numberline {4}La classe T\IeC {\'e}tris}{9}
+\contentsline {subsection}{\numberline {4.1}La classe Model}{9}
+\contentsline {subsubsection}{\numberline {4.1.1}La classe T\IeC {\'e}trominos}{10}
+\contentsline {paragraph}{La classe tetrominosFactory}{10}
+\contentsline {subsubsection}{\numberline {4.1.2}La classe carre}{10}
+\contentsline {subsection}{\numberline {4.2}La classe Controleur}{11}
+\contentsline {subsubsection}{\numberline {4.2.1}La classe souris}{11}
+\contentsline {subsubsection}{\numberline {4.2.2}La classe lecteurSeq}{11}
+\contentsline {subsection}{\numberline {4.3}La classe View}{12}
+\contentsline {subsubsection}{\numberline {4.3.1}La classe panel}{12}
+\contentsline {subsubsection}{\numberline {4.3.2}La classe persoPanel}{12}
+\contentsline {section}{\numberline {5}Conclusion}{12}
