@@ -2,6 +2,11 @@ package tetris;
 
 import javax.swing.*;
 import java.awt.*;
+/**
+ * Classe model de notre tétris gérant la partie et stockant 
+ * les données du jeu.
+ * @author Lucas
+ */
 public class model {
 
     
@@ -16,45 +21,75 @@ public class model {
     
     private Timer timerAction;
    
-    
+    /**
+     * Constructeur de base de la classe model
+     */
     public model () {
         matrix = new carre[NUM_BLOCKS_Y][NUM_BLOCKS_X];
     }
     
-
+    /**
+     * Getter du score
+     * @return 
+     */
     public int getScore () {
         return score;
     }
+    /**
+     * Getter du timerAction
+     * @return 
+     */
     public Timer getTimer () {
         return timerAction;
     }
+    /**
+     * Setter du timerAction
+     * @param timerA 
+     */
     public void setTimer(Timer timerA)
     {
         timerAction=timerA;
     }
+    /**
+     * Getter de la matrix
+     * @return 
+     */
     public carre[][] getMatrix()
     {
         return this.matrix;
     }
+    /**
+     * Setter du score
+     * @param val 
+     */
     public void setScore (int val) {
         this.score = val;
     }
-
+    /**
+     * Getter du tetrominos
+     * @return 
+     */
     public Tetrominos getTetrominos () {
         return tetrominos;
     }
-
+    /**
+     * Setter du tetrominos
+     * @param val 
+     */
     public void setTetrominos (Tetrominos val) {
         this.tetrominos = val;
     }
-    
+    /**
+     * Fonction start permettant de lancer le jeu.
+     */
     public void start()
     {
         tetrominos=tetrominosFactory.creationTetrominos();
         clearMatrix();
     }
     /**
-     * 
+     * Fonction permettant de gérer les déplacements du tétrominos selon 
+     * les X (droite et gauche)
      * @param x 
      */
      synchronized void deplacerTetrominosX(int x){
@@ -80,7 +115,9 @@ public class model {
         }
     }
      /**
-      * 
+      * Fonction permettant de gérer les déplacements du tétrominos selon 
+     * les Y (vers le bas) et de palcer le tétrominos dans le cas ou il touche 
+     * le bas.
       * @param y 
       */
    synchronized public void deplacerTetrominosY(int y){
@@ -99,12 +136,19 @@ public class model {
         
  
     }
+   /**
+    * Fonction permettant de faire la rotation de notre pièce par rapport au parametre
+    * donné à la focntion.
+    * @param nbr 
+    */
     synchronized public void rotationTetrominos(int nbr){
         Tetrominos temp = new Tetrominos(tetrominos);
         temp.rotation(nbr,Math.toRadians(10));
         if(temp.testDeplacement(matrix)) tetrominos =temp;
     }
-    // Clears the matrix
+   /**
+    *  Vide le tableau matrix de la fonction et d'initialiser cela.
+    */
     private void clearMatrix() {
                 for (int row=0;row<matrix.length;row++) {
                         for (int col=0;col<matrix[0].length;col++) {
@@ -114,7 +158,10 @@ public class model {
                         }
                 }
         }
-    
+    /**
+     * Test si il existe des lignes complètes 
+     * et appel UpMatrix pour déplacer dans ce cas la
+     */
     public void testFinLigne(){
         int continuer ;
         for (int row=matrix.length-2;row>0;row--) {
@@ -130,7 +177,10 @@ public class model {
                 }
            }
     }
-    
+    /**
+     * Permet de déplacer ligne supérieur à la ligne suprimé.
+     * @param rowI 
+     */
     public void UpMatrix(int rowI)
     {
         //changer laffectation des matrix

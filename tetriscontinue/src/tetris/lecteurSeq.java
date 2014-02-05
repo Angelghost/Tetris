@@ -12,6 +12,11 @@ public class lecteurSeq extends controleur{
     
     private long currentTime;
     
+    /**
+     * Constructeur de base pour la classe lecteurSeq
+     * @param myModel
+     * @param name 
+     */
     public lecteurSeq (model myModel,String name) {
         super(myModel,1);
         savFile.setLecFile(name);

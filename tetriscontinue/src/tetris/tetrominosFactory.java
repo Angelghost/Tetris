@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.Random;
 
 /**
- * classe avec les fonctions de création de tétrominos et de sauvegarde de séquence
+ * Classe avec les fonctions de création de tétrominos et de sauvegarde de séquence
  * @author Akmale
  */
 public class tetrominosFactory {

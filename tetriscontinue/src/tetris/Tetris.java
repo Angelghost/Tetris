@@ -7,7 +7,9 @@ package tetris;
 import java.awt.event.*;
 import javax.swing.*;
 /**
- *
+ * Classe Tetris corespondant à notre frame principale lors 
+ * de la partie elle permet de capter les mouvements et d'afficher
+ * le jeu.
  * @author Angelgosth
  */
 public class Tetris extends javax.swing.JFrame {
@@ -21,7 +23,9 @@ public class Tetris extends javax.swing.JFrame {
     private Timer timerSouris;
     private final Timer timerAffichage;
     
-    
+    /**
+     * Contructeur  de base pour notre classe Tetris
+     */
     public Tetris() {
         
         this.setContentPane(((panel)viewTetris).monPanel);

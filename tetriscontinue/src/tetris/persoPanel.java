@@ -6,13 +6,9 @@ import java.awt.Graphics2D;
 import java.awt.geom.*;
 import java.awt.*;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
+ * Classe persoPanel est une classe hérittante de la classe JPanel 
+ * pour pouvoir afficher en swing notre tétris.
  * @author Angelgosth
  */
 public class persoPanel extends JPanel{
@@ -20,6 +16,9 @@ public class persoPanel extends JPanel{
     private carre[][] matrix ;
     private Tetrominos tetrominos; 
    private Color sameColor=null;
+   /**
+    * Constructeur par défaut de la classe persoPanel
+    */
    public persoPanel()
    {
        super();

@@ -12,12 +12,16 @@ import javax.swing.Timer;
 import java.awt.Color;
 
 /**
- *
+ * Classe principale de notre programme contenant le main de notre programme.
+ * Se lance au début du logiciel
  * @author Akmale
  */
 public class main {
     public static option myOption;
-    
+    /**
+     * Fonction ce lancant au démarage du prtogramme.
+     * @param args 
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -47,7 +51,7 @@ public class main {
     }
     
     /**
-     * Fonction qui lance le Tétris
+     * Fonction creant la variable du Tetris et lance la partie.
      * @param controleur
      * @param nomSavFile
      * @param robotNameFile
@@ -83,7 +87,7 @@ public class main {
                  tetrominosFactory.setModCreation(1);
                  tetrominosFactory.setNameFileSav(nomSavFile+".seq");
                  myTetris.setControleur(new souris(myTetris.getModel()));  
-                 myTetris.getModel().setTimer(new Timer(100,new ActionListener(){
+                 myTetris.getModel().setTimer(new Timer(20,new ActionListener(){
                      @Override
                      public void actionPerformed(ActionEvent e){
                                  myTetris.getModel().deplacerTetrominosY(1);

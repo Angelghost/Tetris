@@ -10,7 +10,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 /**
- *
+ * Classe savFile permettant de gérer la liaison entre les fichiers
+ * de sauvegarde pour la lecture et l'écriture
  * @author Angelgosth
  */
 public class savFile {
@@ -21,11 +22,17 @@ public class savFile {
     public static BufferedReader buffMov;
     public static long firstTime;
     
-    
+    /**
+     * Constructeur par défaut de la classe savFile
+     */
     public savFile()
     {
         
     }
+    /**
+     * Constructeur en mettant la valeur fileName
+     * @param fileName 
+     */
     public  savFile(String fileName)
     {
         firstTime=System.currentTimeMillis();
@@ -39,7 +46,10 @@ public class savFile {
             
         }
     }
-    
+    /**
+     * Setter du fichier de lecture
+     * @param fileName 
+     */
     public static void setLecFile(String fileName)
     {
         lectName =fileName;
@@ -52,7 +62,10 @@ public class savFile {
             
         }
     }
-    
+    /**
+     * Fonction permettant d'écrire une rotation à notre fichier
+     * @param sens 
+     */
     public static void addRotation(int sens)
     {
           try{
@@ -67,7 +80,11 @@ public class savFile {
         }
 
     }
-    
+    /**
+     * Fonction permettant d'écrire un déplacement horizontale dans notre fichier
+     * @param x
+     * @param y 
+     */
     public static void addMove(int x,int y)
     {
             try{
@@ -82,6 +99,11 @@ public class savFile {
             
         }
     }
+    /**
+     * Focntion permettant d'écrire un déplacement verticale dans notre fichier
+     * @param x
+     * @param y 
+     */
     public static void addDesc(int x,int y)
     {
             try{
@@ -98,6 +120,12 @@ public class savFile {
             
         }
     }
+    
+    /**
+     * Getter pour la prochaine fonction écrite dans le fichier
+     * de lecture.
+     * @return 
+     */
     public static String getNextMove()
     {
         try{

@@ -12,7 +12,9 @@ public class carre extends Rectangle{
     private Color couleur;
     private Point2D center;
     private int plein;
-    
+    /**
+     * Constructeur de base pour la classe carre
+     */
    public carre()
     {
         

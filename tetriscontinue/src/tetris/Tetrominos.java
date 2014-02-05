@@ -4,13 +4,20 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
+/**
+ * Classe Tetrominos permettant la gestion de nos pièces de jeu.
+ * Ainsi que les fonctions de déplacement sur ces dernièrs 
+ * @author Lucas
+ */
 public class Tetrominos {
     
     private double angle = 0;
     private Point coordonne;
     private final ArrayList<carre>  vecCarre;
     
-     
+    /**
+     * Contructeur de base pour la classe Tetrominos
+     */
     public Tetrominos () {
         vecCarre= new ArrayList();
         coordonne=new Point(20,20);
